@@ -1,25 +1,23 @@
 {
   "name": "ngx-quicklink",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Quicklink for Angular",
+  "keywords": ["angular", "prefetching", "router", "performance", "prefetch", "background", "speed", "fetch", "intersectionobserver"],
   "main": "index.umd.js",
   "module": "index.js",
-  "directories": {
-    "example": "example"
-  },
   "scripts": {
     "release": "rm -rf dist && ngc -p tsconfig.json && cp package.json dist/src && cp README.md dist/src && rollup dist/src/index.js --file dist/src/index.umd.js --format umd --name ngxql && uglifyjs dist/src/index.umd.js -o dist/src/index.umd.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mgechev/ng-prefetching-experiments.git"
+    "url": "git+https://github.com/mgechev/ngx-quicklink.git"
   },
   "author": "Minko Gechev <mgechev@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mgechev/ng-prefetching-experiments/issues"
+    "url": "https://github.com/mgechev/ngx-quicklink/issues"
   },
-  "homepage": "https://github.com/mgechev/ng-prefetching-experiments#readme",
+  "homepage": "https://github.com/mgechev/ngx-quicklink#readme",
   "peerDependencies": {
     "@angular/common": ">=6.0.0",
     "@angular/router": ">=6.0.0"
