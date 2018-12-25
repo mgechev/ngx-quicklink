@@ -1,13 +1,14 @@
 {
   "name": "ngx-quicklink",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Quicklink for Angular",
-  "main": "index.js",
+  "main": "index.umd.js",
+  "module": "index.js",
   "directories": {
     "example": "example"
   },
   "scripts": {
-    "release": "rm -rf dist && ngc -p tsconfig.json && cp package.json dist/src && cp README.md dist/src"
+    "release": "rm -rf dist && ngc -p tsconfig.json && cp package.json dist/src && cp README.md dist/src && rollup dist/src/index.js --file dist/src/index.umd.js --format umd --name ngxql && uglifyjs dist/src/index.umd.js -o dist/src/index.umd.js"
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,9 @@
     "@angular/compiler-cli": "^7.1.4",
     "@angular/core": "^7.1.4",
     "@angular/router": "^7.1.4",
+    "rollup": "^0.68.2",
     "rxjs": "^6.3.3",
-    "typescript": "^3.1.1"
+    "typescript": "^3.1.1",
+    "uglify-js": "^3.4.9"
   }
 }
