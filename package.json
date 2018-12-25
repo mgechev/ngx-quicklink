@@ -1,0 +1,35 @@
+{
+  "name": "ngx-quicklink",
+  "version": "0.0.0",
+  "description": "Quicklink for Angular",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "release": "rm -rf dist && ngc -p tsconfig.json && cp package.json dist/src && cp README.md dist/src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgechev/ng-prefetching-experiments.git"
+  },
+  "author": "Minko Gechev <mgechev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mgechev/ng-prefetching-experiments/issues"
+  },
+  "homepage": "https://github.com/mgechev/ng-prefetching-experiments#readme",
+  "peerDependencies": {
+    "@angular/common": ">=6.0.0",
+    "@angular/router": ">=6.0.0"
+  },
+  "devDependencies": {
+    "@angular/common": "^7.1.4",
+    "@angular/compiler": "^7.1.4",
+    "@angular/compiler-cli": "^7.1.4",
+    "@angular/core": "^7.1.4",
+    "@angular/router": "^7.1.4",
+    "rxjs": "^6.3.3",
+    "typescript": "^3.1.1"
+  }
+}
