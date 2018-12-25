@@ -8,7 +8,7 @@ import { LinkHandler } from "./link-handler.service";
 export class LinkDirective {
   private routerLink: RouterLink | RouterLinkWithHref;
 
-  constructor(private router: Router, private linkHandler: LinkHandler, private el: ElementRef, @Optional() link: RouterLink, @Optional() linkWithHref: RouterLinkWithHref) {
+  constructor(private linkHandler: LinkHandler, private el: ElementRef, @Optional() link: RouterLink, @Optional() linkWithHref: RouterLinkWithHref) {
     this.routerLink = link || linkWithHref;
   }
 

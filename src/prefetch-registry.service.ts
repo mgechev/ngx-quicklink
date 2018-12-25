@@ -10,26 +10,10 @@ export class PrefetchRegistry {
     this.trees.push(tree);
   }
 
-  has(url: string) {
+  shouldPrefetch(url: string) {
     const tree = this.router.parseUrl(url)
     return this.trees.some(child => containsTree(child, tree))
   }
-}
-
-export function shallowEqual(a: {[x: string]: any}, b: {[x: string]: any}): boolean {
-  const k1 = Object.keys(a);
-  const k2 = Object.keys(b);
-  if (k1.length != k2.length) {
-    return false;
-  }
-  let key: string;
-  for (let i = 0; i < k1.length; i++) {
-    key = k1[i];
-    if (a[key] !== b[key]) {
-      return false;
-    }
-  }
-  return true;
 }
 
 function containsQueryParams(container: Params, containee: Params): boolean {
@@ -38,7 +22,7 @@ function containsQueryParams(container: Params, containee: Params): boolean {
       Object.keys(containee).every(key => containee[key] === container[key]);
 }
 
-export function containsTree(container: UrlTree, containee: UrlTree): boolean {
+function containsTree(container: UrlTree, containee: UrlTree): boolean {
   return containsQueryParams(container.queryParams, containee.queryParams) &&
       containsSegmentGroup(container.root, containee.root);
 }

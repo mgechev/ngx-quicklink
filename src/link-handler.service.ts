@@ -3,6 +3,39 @@ import { LinkDirective } from "./link.directive";
 import { RouterPreloader } from "@angular/router";
 import { PrefetchRegistry } from "./prefetch-registry.service";
 
+type RequestIdleCallbackHandle = any;
+type RequestIdleCallbackOptions = {
+  timeout: number;
+};
+type RequestIdleCallbackDeadline = {
+  readonly didTimeout: boolean;
+  timeRemaining: (() => number);
+};
+
+declare global {
+  interface Window {
+    requestIdleCallback: ((
+      callback: ((deadline: RequestIdleCallbackDeadline) => void),
+      opts?: RequestIdleCallbackOptions,
+    ) => RequestIdleCallbackHandle);
+    cancelIdleCallback: ((handle: RequestIdleCallbackHandle) => void);
+  }
+}
+
+const requestIdleCallback = window.requestIdleCallback || function (cb: Function) {
+    const start = Date.now();
+    return setTimeout(function () {
+      cb({
+        didTimeout: false,
+        timeRemaining: function () {
+          return Math.max(0, 50 - (Date.now() - start));
+        },
+      });
+    }, 1);
+  };
+
+const cancelIdleCallback = window.cancelIdleCallback || clearTimeout;
+
 @Injectable()
 export class LinkHandler {
   private registerIdle: any;
@@ -16,7 +49,7 @@ export class LinkHandler {
         const link = entry.target as HTMLAnchorElement;
         this.queue.add(this.elementLink.get(link).urlTree);
         this.observer.unobserve(link);
-        window.requestIdleCallback(() => {
+        requestIdleCallback(() => {
           this.loader.preload().subscribe(() => void 0);
         });
       }
@@ -27,9 +60,9 @@ export class LinkHandler {
 
   register(el: LinkDirective) {
     this.elementLink.set(el.element, el);
-    window.cancelIdleCallback(this.registerIdle);
+    cancelIdleCallback(this.registerIdle);
     this.registerBuffer.push(el.element);
-    this.registerIdle = window.requestIdleCallback(() => {
+    this.registerIdle = requestIdleCallback(() => {
       this.registerBuffer.forEach(e => {
         this.observer.observe(e);
       });
@@ -39,7 +72,7 @@ export class LinkHandler {
 
   unregister(el: LinkDirective) {
     this.elementLink.delete(el.element);
-    window.cancelIdleCallback(this.unregisterIdle);
+    cancelIdleCallback(this.unregisterIdle);
     this.unregisterBuffer.push(el.element);
     this.unregisterIdle = window.requestIdleCallback(() => {
       this.unregisterBuffer.forEach(e => {

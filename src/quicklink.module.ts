@@ -4,24 +4,6 @@ import {LinkHandler} from "./link-handler.service";
 import {PrefetchRegistry} from './prefetch-registry.service';
 import {QuicklinkStrategy} from "./quicklink-strategy.service";
 
-type RequestIdleCallbackHandle = any;
-type RequestIdleCallbackOptions = {
-  timeout: number;
-};
-type RequestIdleCallbackDeadline = {
-  readonly didTimeout: boolean;
-  timeRemaining: (() => number);
-};
-
-declare global {
-  interface Window {
-    requestIdleCallback: ((
-      callback: ((deadline: RequestIdleCallbackDeadline) => void),
-      opts?: RequestIdleCallbackOptions,
-    ) => RequestIdleCallbackHandle);
-    cancelIdleCallback: ((handle: RequestIdleCallbackHandle) => void);
-  }
-}
 
 @NgModule({
   declarations: [LinkDirective],
