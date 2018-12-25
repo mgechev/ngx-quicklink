@@ -15,6 +15,7 @@ export class QuicklinkStrategy implements PreloadingStrategy {
         return EMPTY;
     }
     const fullPath = findPath(this.router.config, route);
+    // TODO(mgechev): make sure it works for parameterized routes
     if (this.queue.shouldPrefetch(fullPath)) {
       return load();
     }
