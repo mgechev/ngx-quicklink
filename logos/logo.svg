@@ -1,0 +1,19 @@
+<svg width="600" height="250" xmlns="http://www.w3.org/2000/svg">
+ <style type="text/css">.st0{fill:#DD0031;}
+	.st1{fill:#C3002F;}
+	.st2{fill:#FFFFFF;}</style>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="252" width="602" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_1">
+   <polygon id="svg_2" points="125,30 125,30 125,30 31.9,63.2 46.1,186.3 125,230 125,230 125,230 203.9,186.3 218.1,63.2  " class="st0"/>
+   <polygon id="svg_3" points="125,30 125,52.2 125,52.1 125,153.4 125,153.4 125,230 125,230 203.9,186.3 218.1,63.2 125,30  " class="st1"/>
+   <path id="svg_4" d="m125,52.1l-58.2,130.5l0,0l21.7,0l0,0l11.7,-29.2l49.4,0l11.7,29.2l0,0l21.7,0l0,0l-58,-130.5l0,0l0,0l0,0l0,0zm17,83.3l-34,0l17,-40.9l17,40.9z" class="st2"/>
+  </g>
+  <text font-style="italic" xml:space="preserve" text-anchor="start" font-family="'Trebuchet MS', Gadget, sans-serif" font-size="84" id="svg_5" y="156.4375" x="226.5" stroke-width="0" stroke="#000" fill="#000000">quicklink</text>
+ </g>
+</svg>

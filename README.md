@@ -1,3 +1,5 @@
+<div style="text-align:center"><img src="logos/logo.svg"></div>
+
 # ngx-quicklink
 
 Angular implementation for [quicklink](https://github.com/GoogleChromeLabs/quicklink). It provides router preloading strategy which automatically downloads the lazy-loaded modules associated with all the visible links on the screen.
