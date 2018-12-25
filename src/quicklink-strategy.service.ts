@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { PreloadingStrategy, Router, Route } from "@angular/router";
-import { PrefetchRegistry } from "./prefetch-registry.service";
-import { EMPTY } from "rxjs";
+import { Injectable } from '@angular/core';
+import { PreloadingStrategy, Router, Route } from '@angular/router';
+import { PrefetchRegistry } from './prefetch-registry.service';
+import { EMPTY } from 'rxjs';
 
 @Injectable()
 export class QuicklinkStrategy implements PreloadingStrategy {
@@ -11,7 +11,8 @@ export class QuicklinkStrategy implements PreloadingStrategy {
     const conn = (navigator as any).connection;
     if (conn) {
       // Don't prefetch if the user is on 2G. or if Save-Data is enabled..
-      if ((conn.effectiveType || '').includes('2g') || conn.saveData) return EMPTY;
+      if ((conn.effectiveType || '').includes('2g') || conn.saveData)
+        return EMPTY;
     }
     const fullPath = findPath(this.router.config, route);
     if (this.queue.shouldPrefetch(fullPath)) {

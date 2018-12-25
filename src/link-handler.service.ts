@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { LinkDirective } from "./link.directive";
-import { RouterPreloader } from "@angular/router";
-import { PrefetchRegistry } from "./prefetch-registry.service";
+import { Injectable } from '@angular/core';
+import { LinkDirective } from './link.directive';
+import { RouterPreloader } from '@angular/router';
+import { PrefetchRegistry } from './prefetch-registry.service';
 
 type RequestIdleCallbackHandle = any;
 type RequestIdleCallbackOptions = {
@@ -16,20 +16,22 @@ declare global {
   interface Window {
     requestIdleCallback: ((
       callback: ((deadline: RequestIdleCallbackDeadline) => void),
-      opts?: RequestIdleCallbackOptions,
+      opts?: RequestIdleCallbackOptions
     ) => RequestIdleCallbackHandle);
     cancelIdleCallback: ((handle: RequestIdleCallbackHandle) => void);
   }
 }
 
-const requestIdleCallback = window.requestIdleCallback || function (cb: Function) {
+const requestIdleCallback =
+  window.requestIdleCallback ||
+  function(cb: Function) {
     const start = Date.now();
-    return setTimeout(function () {
+    return setTimeout(function() {
       cb({
         didTimeout: false,
-        timeRemaining: function () {
+        timeRemaining: function() {
           return Math.max(0, 50 - (Date.now() - start));
-        },
+        }
       });
     }, 1);
   };
@@ -56,18 +58,19 @@ export class LinkHandler {
     });
   });
 
-  constructor(private loader: RouterPreloader, private queue: PrefetchRegistry) {}
+  constructor(
+    private loader: RouterPreloader,
+    private queue: PrefetchRegistry
+  ) {}
 
   register(el: LinkDirective) {
     this.elementLink.set(el.element, el);
     cancelIdleCallback(this.registerIdle);
     this.registerBuffer.push(el.element);
     this.registerIdle = requestIdleCallback(() => {
-      this.registerBuffer.forEach(e => {
-        this.observer.observe(e);
-      });
+      this.registerBuffer.forEach(e => this.observer.observe(e));
       this.registerBuffer = [];
-    })
+    });
   }
 
   unregister(el: LinkDirective) {
@@ -75,10 +78,8 @@ export class LinkHandler {
     cancelIdleCallback(this.unregisterIdle);
     this.unregisterBuffer.push(el.element);
     this.unregisterIdle = window.requestIdleCallback(() => {
-      this.unregisterBuffer.forEach(e => {
-        this.observer.observe(e);
-      });
+      this.unregisterBuffer.forEach(e => this.observer.observe(e));
       this.unregisterBuffer = [];
-    })
+    });
   }
 }

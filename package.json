@@ -2,11 +2,22 @@
   "name": "ngx-quicklink",
   "version": "0.0.0",
   "description": "Quicklink for Angular",
-  "keywords": ["angular", "prefetching", "router", "performance", "prefetch", "background", "speed", "fetch", "intersectionobserver"],
+  "keywords": [
+    "angular",
+    "prefetching",
+    "router",
+    "performance",
+    "prefetch",
+    "background",
+    "speed",
+    "fetch",
+    "intersectionobserver"
+  ],
   "main": "index.umd.js",
   "module": "index.js",
   "scripts": {
-    "release": "rm -rf dist && ngc -p tsconfig.json && cp package.json dist/src && cp README.md dist/src && rollup dist/src/index.js --file dist/src/index.umd.js --format umd --name ngxql && uglifyjs dist/src/index.umd.js -o dist/src/index.umd.js"
+    "release": "rm -rf dist && ngc -p tsconfig.json && cp package.json dist/src && cp README.md dist/src && rollup dist/src/index.js --file dist/src/index.umd.js --format umd --name ngxql && uglifyjs dist/src/index.umd.js -o dist/src/index.umd.js",
+    "format": "prettier --single-quote --write src/*.ts"
   },
   "repository": {
     "type": "git",
@@ -28,6 +39,7 @@
     "@angular/compiler-cli": "^7.1.4",
     "@angular/core": "^7.1.4",
     "@angular/router": "^7.1.4",
+    "prettier": "^1.15.3",
     "rollup": "^0.68.2",
     "rxjs": "^6.3.3",
     "typescript": "^3.1.1",

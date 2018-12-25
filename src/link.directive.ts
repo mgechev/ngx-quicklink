@@ -1,6 +1,6 @@
-import { Directive, ElementRef, Optional } from "@angular/core";
-import { RouterLink, RouterLinkWithHref, Router } from "@angular/router";
-import { LinkHandler } from "./link-handler.service";
+import { Directive, ElementRef, Optional } from '@angular/core';
+import { RouterLink, RouterLinkWithHref, Router } from '@angular/router';
+import { LinkHandler } from './link-handler.service';
 
 @Directive({
   selector: '[routerLink]'
@@ -8,7 +8,12 @@ import { LinkHandler } from "./link-handler.service";
 export class LinkDirective {
   private routerLink: RouterLink | RouterLinkWithHref;
 
-  constructor(private linkHandler: LinkHandler, private el: ElementRef, @Optional() link: RouterLink, @Optional() linkWithHref: RouterLinkWithHref) {
+  constructor(
+    private linkHandler: LinkHandler,
+    private el: ElementRef,
+    @Optional() link: RouterLink,
+    @Optional() linkWithHref: RouterLinkWithHref
+  ) {
     this.routerLink = link || linkWithHref;
   }
 
