@@ -1,4 +1,6 @@
-<div style="text-align:center"><img src="logos/logo.svg"></div>
+<p align="center">
+  <img src="logos/logo.svg" width="450px">
+</div>
 
 # ngx-quicklink
 
