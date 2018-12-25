@@ -4,7 +4,7 @@
 
 # ngx-quicklink
 
-Angular implementation for [quicklink](https://github.com/GoogleChromeLabs/quicklink). It provides router preloading strategy which automatically downloads the lazy-loaded modules associated with all the visible links on the screen.
+[quicklink](https://github.com/GoogleChromeLabs/quicklink) implementation for Angular. It provides router preloading strategy which automatically downloads the lazy-loaded modules associated with all the visible links on the screen.
 
 ## How it works
 
@@ -27,7 +27,7 @@ First you need to install the project:
 npm i ngx-quicklink --save
 ```
 
-After that import the `QuicklinkModule` to the `AppComponent`, and use the `QuicklinkStrategy` as `preloadingStrategy` in the router's config:
+After that import the `QuicklinkModule` to the `AppComponent`, and use the `QuicklinkStrategy` as `preloadingStrategy` in the router's configuration. For example:
 
 ```ts
 // ...
@@ -43,6 +43,13 @@ import {QuicklinkModule, QuicklinkStrategy} from 'ngx-quicklink';
   bootstrap: [...]
 })
 export class AppModule { }
+```
+
+For a demo, look at the `example` directory. To run the project use:
+
+```
+cd ngx-quicklink && npm i && npm run release
+cd example && npm i && ng serve
 ```
 
 ## Polyfills
@@ -71,3 +78,4 @@ Alternatively, see the [Intersection Observer polyfill](https://github.com/w3c/I
 ## License
 
 MIT
+
