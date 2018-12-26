@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logos/logo.svg" width="450px">
+  <img src="https://github.com/mgechev/ngx-quicklink/blob/master/logos/logo.png?raw=true" width="450px">
 </div>
 
 # ngx-quicklink
