@@ -78,7 +78,7 @@ export class LinkHandler {
     cancelIdleCallback(this.unregisterIdle);
     this.unregisterBuffer.push(el.element);
     this.unregisterIdle = window.requestIdleCallback(() => {
-      this.unregisterBuffer.forEach(e => this.observer.observe(e));
+      this.unregisterBuffer.forEach(e => this.observer.unobserve(e));
       this.unregisterBuffer = [];
     });
   }
