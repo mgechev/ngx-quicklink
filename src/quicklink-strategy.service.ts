@@ -10,9 +10,8 @@ export class QuicklinkStrategy implements PreloadingStrategy {
   preload(route: Route, load: Function) {
     const conn = (navigator as any).connection;
     if (conn) {
-      // Don't prefetch if the user is on 2G. or if Save-Data is enabled..
-      if ((conn.effectiveType || '').includes('2g') || conn.saveData)
-        return EMPTY;
+      // Don't preload if the user is on 2G. or if Save-Data is enabled..
+      if ((conn.effectiveType || '').includes('2g') || conn.saveData) return EMPTY;
     }
     const fullPath = findPath(this.router.config, route);
     // TODO(mgechev): make sure it works for parameterized routes

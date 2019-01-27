@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app-routing.module';
 import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
 
+
 @NgModule({
   declarations: [
     AppComponent

@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, InjectionToken } from '@angular/core';
 import { LinkDirective } from './link.directive';
 import { RouterPreloader } from '@angular/router';
+import { LinkHandlerStrategy } from './link-handler-strategy';
 import { PrefetchRegistry } from './prefetch-registry.service';
 
 type RequestIdleCallbackHandle = any;
@@ -37,31 +38,33 @@ const requestIdleCallback =
   };
 
 const cancelIdleCallback = window.cancelIdleCallback || clearTimeout;
+const observerSupported = () => !!(window as any).IntersectionObserver;
+
+export const LinkHandler = new InjectionToken('LinkHandler');
 
 @Injectable()
-export class LinkHandler {
+export class ObservableLinkHandler implements LinkHandlerStrategy {
   private registerIdle: any;
   private unregisterIdle: any;
   private registerBuffer: Element[] = [];
   private unregisterBuffer: Element[] = [];
   private elementLink = new Map<Element, LinkDirective>();
-  private observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const link = entry.target as HTMLAnchorElement;
-        this.queue.add(this.elementLink.get(link).urlTree);
-        this.observer.unobserve(link);
-        requestIdleCallback(() => {
-          this.loader.preload().subscribe(() => void 0);
+  private observer: IntersectionObserver | null = observerSupported()
+    ? new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const link = entry.target as HTMLAnchorElement;
+            this.queue.add(this.elementLink.get(link).urlTree);
+            this.observer.unobserve(link);
+            requestIdleCallback(() => {
+              this.loader.preload().subscribe(() => void 0);
+            });
+          }
         });
-      }
-    });
-  });
+      })
+    : null;
 
-  constructor(
-    private loader: RouterPreloader,
-    private queue: PrefetchRegistry
-  ) {}
+  constructor(private loader: RouterPreloader, private queue: PrefetchRegistry) {}
 
   register(el: LinkDirective) {
     this.elementLink.set(el.element, el);
@@ -78,8 +81,28 @@ export class LinkHandler {
     cancelIdleCallback(this.unregisterIdle);
     this.unregisterBuffer.push(el.element);
     this.unregisterIdle = window.requestIdleCallback(() => {
-      this.unregisterBuffer.forEach(e => this.observer.unobserve(e));
+      this.unregisterBuffer.forEach(e => this.observer.observe(e));
       this.unregisterBuffer = [];
     });
+  }
+
+  supported() {
+    return observerSupported();
+  }
+}
+
+@Injectable()
+export class PreloadLinkHandler implements LinkHandlerStrategy {
+  constructor(private loader: RouterPreloader, private queue: PrefetchRegistry) {}
+
+  register(el: LinkDirective) {
+    this.queue.add(el.urlTree);
+    requestIdleCallback(() => this.loader.preload().subscribe(() => void 0));
+  }
+
+  unregister(_: LinkDirective) {}
+
+  supported() {
+    return true;
   }
 }

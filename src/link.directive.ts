@@ -1,19 +1,22 @@
-import { Directive, ElementRef, Optional } from '@angular/core';
+import { Directive, ElementRef, Optional, Inject } from '@angular/core';
 import { RouterLink, RouterLinkWithHref, Router } from '@angular/router';
 import { LinkHandler } from './link-handler.service';
+import { LinkHandlerStrategy } from './link-handler-strategy';
 
 @Directive({
   selector: '[routerLink]'
 })
 export class LinkDirective {
   private routerLink: RouterLink | RouterLinkWithHref;
+  private linkHandler: LinkHandlerStrategy;
 
   constructor(
-    private linkHandler: LinkHandler,
+    @Inject(LinkHandler) private linkHandlers: LinkHandlerStrategy[],
     private el: ElementRef,
     @Optional() link: RouterLink,
     @Optional() linkWithHref: RouterLinkWithHref
   ) {
+    this.linkHandler = this.linkHandlers.filter(h => h.supported()).shift();
     this.routerLink = link || linkWithHref;
   }
 

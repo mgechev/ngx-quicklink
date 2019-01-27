@@ -7,7 +7,10 @@ export const routes: Routes = [
   },
   {
     path: 'contact',
-    loadChildren: './contact/contact.module#ContactModule'
+    loadChildren: './contact/contact.module#ContactModule',
+    data: {
+      preload: true
+    }
   },
   {
     path: '',
