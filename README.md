@@ -56,10 +56,10 @@ cd example && npm i && ng serve
 
 ## Polyfills
 
-`quicklink`:
+`ngx-quicklink`:
 
 * Includes a very small fallback for [requestIdleCallback](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback)
-* Requires `IntersectionObserver` to be supported (see [CanIUse](https://caniuse.com/#feat=intersectionobserver)). We recommend conditionally polyfilling this feature with a service like Polyfill.io:
+* Optionally requires `IntersectionObserver` to be supported (see [CanIUse](https://caniuse.com/#feat=intersectionobserver)). On older browsers `ngx-quicklink` preloads all links on the page. If you want to enable the `IntersectionObserver` behavior on older browsers you can use conditional polyfill loading:
 
 ```html
 <script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
