@@ -80,7 +80,7 @@ export class ObservableLinkHandler implements LinkHandlerStrategy {
     this.elementLink.delete(el.element);
     cancelIdleCallback(this.unregisterIdle);
     this.unregisterBuffer.push(el.element);
-    this.unregisterIdle = window.requestIdleCallback(() => {
+    this.unregisterIdle = requestIdleCallback(() => {
       this.unregisterBuffer.forEach(e => this.observer.observe(e));
       this.unregisterBuffer = [];
     });
