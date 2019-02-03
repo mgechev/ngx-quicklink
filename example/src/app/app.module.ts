@@ -12,7 +12,7 @@ import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     QuicklinkModule,
     RouterModule.forRoot(routes, {preloadingStrategy: QuicklinkStrategy}),
   ],
