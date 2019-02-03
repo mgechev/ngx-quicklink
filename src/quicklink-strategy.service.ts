@@ -8,7 +8,7 @@ export class QuicklinkStrategy implements PreloadingStrategy {
   constructor(private queue: PrefetchRegistry, private router: Router) {}
 
   preload(route: Route, load: Function) {
-    const conn = (navigator as any).connection;
+    const conn = (typeof window !== "undefined") ? (navigator as any).connection : undefined;
     if (conn) {
       // Don't preload if the user is on 2G. or if Save-Data is enabled..
       if ((conn.effectiveType || '').includes('2g') || conn.saveData) return EMPTY;

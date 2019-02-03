@@ -23,7 +23,7 @@ declare global {
   }
 }
 
-const requestIdleCallback =
+const requestIdleCallback = (typeof window !== "undefined") ? (
   window.requestIdleCallback ||
   function(cb: Function) {
     const start = Date.now();
@@ -35,10 +35,10 @@ const requestIdleCallback =
         }
       });
     }, 1);
-  };
+  }) : () => {};
 
-const cancelIdleCallback = window.cancelIdleCallback || clearTimeout;
-const observerSupported = () => !!(window as any).IntersectionObserver;
+const cancelIdleCallback = (typeof window !== "undefined") ? (window.cancelIdleCallback || clearTimeout) : () => {};
+const observerSupported = () => (typeof window !== "undefined") ? !!(window as any).IntersectionObserver : false;
 
 export const LinkHandler = new InjectionToken('LinkHandler');
 
