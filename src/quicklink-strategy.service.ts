@@ -14,7 +14,7 @@ export class QuicklinkStrategy implements PreloadingStrategy {
       if ((conn.effectiveType || '').includes('2g') || conn.saveData) return EMPTY;
     }
     // Allow preload blacklisting
-    if (route.data && !route.data.preload) {
+    if (route.data && route.data.preload === false) {
       return EMPTY;
     }
     const fullPath = findPath(this.router.config, route);
