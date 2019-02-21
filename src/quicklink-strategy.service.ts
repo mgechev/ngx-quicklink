@@ -5,9 +5,15 @@ import { EMPTY } from 'rxjs';
 
 @Injectable()
 export class QuicklinkStrategy implements PreloadingStrategy {
+  loading = new Set<Route>();
+
   constructor(private queue: PrefetchRegistry, private router: Router) {}
 
   preload(route: Route, load: Function) {
+    if (this.loading.has(route)) {
+      // Don't preload the same route twice
+      return EMPTY;
+    }
     const conn = (typeof window !== "undefined") ? (navigator as any).connection : undefined;
     if (conn) {
       // Don't preload if the user is on 2G. or if Save-Data is enabled..
@@ -20,6 +26,7 @@ export class QuicklinkStrategy implements PreloadingStrategy {
     const fullPath = findPath(this.router.config, route);
     // TODO(mgechev): make sure it works for parameterized routes
     if (this.queue.shouldPrefetch(fullPath)) {
+      this.loading.add(route);
       return load();
     }
     return EMPTY;
