@@ -38,10 +38,7 @@ function containsTree(container: UrlTree, containee: UrlTree): boolean {
   );
 }
 
-function containsSegmentGroup(
-  container: UrlSegmentGroup,
-  containee: UrlSegmentGroup
-): boolean {
+function containsSegmentGroup(container: UrlSegmentGroup, containee: UrlSegmentGroup): boolean {
   return containsSegmentGroupHelper(container, containee, containee.segments);
 }
 
@@ -59,8 +56,7 @@ function containsSegmentGroupHelper(
     if (!equalPath(container.segments, containeePaths)) return false;
     for (const c in containee.children) {
       if (!container.children[c]) return false;
-      if (!containsSegmentGroup(container.children[c], containee.children[c]))
-        return false;
+      if (!containsSegmentGroup(container.children[c], containee.children[c])) return false;
     }
     return true;
   } else {
@@ -68,11 +64,7 @@ function containsSegmentGroupHelper(
     const next = containeePaths.slice(container.segments.length);
     if (!equalPath(container.segments, current)) return false;
     if (!container.children[PRIMARY_OUTLET]) return false;
-    return containsSegmentGroupHelper(
-      container.children[PRIMARY_OUTLET],
-      containee,
-      next
-    );
+    return containsSegmentGroupHelper(container.children[PRIMARY_OUTLET], containee, next);
   }
 }
 
