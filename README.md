@@ -77,6 +77,12 @@ Alternatively, see the [Intersection Observer polyfill](https://github.com/w3c/I
 
 >The prefetching behavior of Guess.js would most likely be more accurate compared to ngx-quicklink, which will reduce the overfetching. Guess.js, however, may take a little more effort to setup. In case you don't want to integrate with the analytics of your website ngx-quicklink is the right choice for you.
 
+## Contributors
+
+[<img alt="mgechev" src="https://avatars1.githubusercontent.com/u/455023?v=4&s=117" width="117">](https://github.com/mgechev) |[<img alt="wKoza" src="https://avatars2.githubusercontent.com/u/11403260?v=4&s=117" width="117">](https://github.com/wKoza) |[<img alt="rolaveric" src="https://avatars1.githubusercontent.com/u/960670?v=4&s=117" width="117">](https://github.com/rolaveric) |[<img alt="thekiba" src="https://avatars0.githubusercontent.com/u/1910515?v=4&s=117" width="117">](https://github.com/thekiba) |
+:---: |:---: |:---: |:---: |
+[mgechev](https://github.com/mgechev) |[wKoza](https://github.com/wKoza) |[rolaveric](https://github.com/rolaveric) |[thekiba](https://github.com/thekiba) |
+
 ## License
 
 MIT
