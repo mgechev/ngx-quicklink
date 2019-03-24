@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-// import { QuickLink } from './quicklink';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'example';
-  // constructor(private ql: QuickLink) {}
+
+  val = null;
+
+  constructor() {
+    setTimeout(() => this.val = '/about/team', 1500);
+  }
 }
