@@ -31,25 +31,40 @@ After that import the `QuicklinkModule` to the `AppComponent`, and use the `Quic
 
 ```ts
 // ...
-import {QuicklinkModule, QuicklinkStrategy} from 'ngx-quicklink';
+import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
 
 @NgModule({
   declarations: [...],
   imports: [
     // ...
     QuicklinkModule,
-    RouterModule.forRoot(routes, {preloadingStrategy: QuicklinkStrategy}),
+    RouterModule.forRoot(routes, { preloadingStrategy: QuicklinkStrategy }),
   ],
   bootstrap: [...]
 })
-export class AppModule { }
+export class AppModule {}
+```
+
+If you want to add a route in the ignore list so that `ngx-quicklink` will not preload it use the `data` property:
+
+```ts
+export const routes: Routes = [
+  {
+    path: 'contact',
+    loadChildren: './contact/contact.module#ContactModule',
+    data: {
+      preload: false
+    }
+  }
+];
+
 ```
 
 **Note that to make the module available in lazy-loaded modules as well you need to import it in a shared module and export it.** Look at [this commit](https://github.com/mgechev/angular-realworld-example-app-qucklink/commit/33ea101c7d84bb5ca086f107148bbc958659f83f) to see how `ngx-quicklink` is integrated in the [angular-realworld-example-app](https://github.com/gothinkster/angular-realworld-example-app).
 
 For a demo, look at the `example` directory. To run the project use:
 
-```
+```shell
 cd ngx-quicklink && npm i && npm run release
 cd example && npm i && ng serve
 ```
@@ -86,4 +101,3 @@ Alternatively, see the [Intersection Observer polyfill](https://github.com/w3c/I
 ## License
 
 MIT
-
