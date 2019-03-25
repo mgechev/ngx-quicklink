@@ -40,16 +40,15 @@ const findPath = (config: Route[], route: Route): string => {
   const visited = new Set<Route>();
   while (config.length) {
     const el = config.shift();
-    if (visited.has(el)) continue;
     visited.add(el);
     if (el === route) break;
-    (el.children || []).forEach(r => {
-      parent.set(r, el);
-      config.push(r);
-    });
+    let children = el.children || [];
     const current = (el as any)._loadedConfig;
-    if (!current || !current.routes) continue;
-    current.routes.forEach((r: Route) => {
+    if (current && current.routes) {
+      children = children.concat(current.routes);
+    }
+    children.forEach((r: Route) => {
+      if (visited.has(r)) return;
       parent.set(r, el);
       config.push(r);
     });
