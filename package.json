@@ -13,10 +13,10 @@
     "fetch",
     "intersectionobserver"
   ],
-  "main": "index.umd.js",
+  "main": "index.js",
   "module": "index.js",
   "scripts": {
-    "release": "rm -rf dist && ngc -p tsconfig.json && cp package.json dist/src && cp README.md dist/src && rollup dist/src/index.js --file dist/src/index.umd.js --format umd --name ngxql && uglifyjs dist/src/index.umd.js -o dist/src/index.umd.js",
+    "release": "rm -rf dist && ngc -p tsconfig.json && cp package.json dist/src && cp README.md dist/src && rollup dist/src/index.js --file dist/src/index.umd.js --format umd --name ngxql && uglifyjs --mangle dist/src/index.umd.js -m -o dist/src/index.umd.js",
     "start": "nodemon -e ts --watch src --exec \"npm run release\"",
     "format": "prettier --single-quote --write src/*.ts"
   },

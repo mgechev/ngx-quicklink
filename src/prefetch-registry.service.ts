@@ -19,7 +19,7 @@ export class PrefetchRegistry {
 
   shouldPrefetch(url: string) {
     const tree = this.router.parseUrl(url);
-    return this.trees.some(child => containsTree(child, tree));
+    return this.trees.some(containsTree.bind(null, tree));
   }
 }
 
@@ -31,18 +31,14 @@ function containsQueryParams(container: Params, containee: Params): boolean {
   );
 }
 
-function containsTree(container: UrlTree, containee: UrlTree): boolean {
+function containsTree(containee: UrlTree, container: UrlTree): boolean {
   return (
     containsQueryParams(container.queryParams, containee.queryParams) &&
-    containsSegmentGroup(container.root, containee.root)
+    containsSegmentGroup(container.root, containee.root, containee.root.segments)
   );
 }
 
-function containsSegmentGroup(container: UrlSegmentGroup, containee: UrlSegmentGroup): boolean {
-  return containsSegmentGroupHelper(container, containee, containee.segments);
-}
-
-function containsSegmentGroupHelper(
+function containsSegmentGroup(
   container: UrlSegmentGroup,
   containee: UrlSegmentGroup,
   containeePaths: UrlSegment[]
@@ -56,7 +52,14 @@ function containsSegmentGroupHelper(
     if (!equalPath(container.segments, containeePaths)) return false;
     for (const c in containee.children) {
       if (!container.children[c]) return false;
-      if (!containsSegmentGroup(container.children[c], containee.children[c])) return false;
+      if (
+        !containsSegmentGroup(
+          container.children[c],
+          containee.children[c],
+          containee.children[c].segments
+        )
+      )
+        return false;
     }
     return true;
   } else {
@@ -64,11 +67,13 @@ function containsSegmentGroupHelper(
     const next = containeePaths.slice(container.segments.length);
     if (!equalPath(container.segments, current)) return false;
     if (!container.children[PRIMARY_OUTLET]) return false;
-    return containsSegmentGroupHelper(container.children[PRIMARY_OUTLET], containee, next);
+    return containsSegmentGroup(container.children[PRIMARY_OUTLET], containee, next);
   }
 }
 
 export function equalPath(as: UrlSegment[], bs: UrlSegment[]): boolean {
   if (as.length !== bs.length) return false;
-  return as.every((a, i) => a.path === bs[i].path);
+  return as.every(
+    (a, i) => a.path === bs[i].path || a.path.startsWith(':') || bs[i].path.startsWith(':')
+  );
 }

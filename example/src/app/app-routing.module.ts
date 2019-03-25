@@ -13,6 +13,10 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'home/:id',
+    loadChildren: './home/home.module#HomeModule'
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full'
