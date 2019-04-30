@@ -39,7 +39,7 @@ export class LinkDirective implements OnInit, OnChanges, OnDestroy {
     return this.el.nativeElement;
   }
 
-  get urlTree() {
+  get urlTree(): any {
     return this.rl.urlTree;
   }
 }
