@@ -3,18 +3,18 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: 'about',
-    loadChildren: './about/about.module#AboutModule'
+    loadChildren: () => import('./about/about.module').then(m => m.AboutModule),
   },
   {
     path: 'contact',
-    loadChildren: './contact/contact.module#ContactModule',
+    loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule),
     data: {
       preload: true
     }
   },
   {
     path: 'home/:id',
-    loadChildren: './home/home.module#HomeModule'
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
   },
   {
     path: '',
