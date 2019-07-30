@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/ng-packagr/package.schema.json",
   "name": "ngx-quicklink",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Quicklink for Angular",
   "keywords": [
     "angular",
@@ -17,7 +17,6 @@
   "main": "index.umd.js",
   "module": "index.js",
   "scripts": {
-    "release": "rm -rf dist && ngc -p tsconfig.json && cp package.json dist/src && cp README.md dist/src && rollup dist/src/index.js --file dist/src/index.umd.js --format umd --name ngxql && uglifyjs dist/src/index.umd.js -m -o dist/src/index.umd.js",
     "start": "nodemon -e ts --watch src --exec \"npm run release\"",
     "format": "prettier --single-quote --write src/*.ts",
     "build": "ng-packagr -p package.json"
@@ -51,9 +50,7 @@
     "ng-packagr": "^5.4.3",
     "nodemon": "^1.18.10",
     "prettier": "^1.15.3",
-    "rollup": "^0.68.2",
     "rxjs": "^6.4.0",
-    "typescript": "^3.4.0",
-    "uglify-js": "^3.4.9"
+    "typescript": "^3.4.0"
   }
 }
