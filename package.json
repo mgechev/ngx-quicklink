@@ -1,4 +1,5 @@
 {
+  "$schema": "./node_modules/ng-packagr/package.schema.json",
   "name": "ngx-quicklink",
   "version": "0.1.0",
   "description": "Quicklink for Angular",
@@ -18,7 +19,13 @@
   "scripts": {
     "release": "rm -rf dist && ngc -p tsconfig.json && cp package.json dist/src && cp README.md dist/src && rollup dist/src/index.js --file dist/src/index.umd.js --format umd --name ngxql && uglifyjs dist/src/index.umd.js -m -o dist/src/index.umd.js",
     "start": "nodemon -e ts --watch src --exec \"npm run release\"",
-    "format": "prettier --single-quote --write src/*.ts"
+    "format": "prettier --single-quote --write src/*.ts",
+    "build": "ng-packagr -p package.json"
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public_api.ts"
+    }
   },
   "repository": {
     "type": "git",
@@ -39,8 +46,9 @@
     "@angular/compiler": "^8.0.0-rc.0",
     "@angular/compiler-cli": "^8.0.0-rc.0",
     "@angular/core": "^8.0.0-rc.0",
-    "@angular/router": "^8.0.0-rc.0",
     "@angular/platform-browser": "^8.0.0-rc.0",
+    "@angular/router": "^8.0.0-rc.0",
+    "ng-packagr": "^5.4.3",
     "nodemon": "^1.18.10",
     "prettier": "^1.15.3",
     "rollup": "^0.68.2",
