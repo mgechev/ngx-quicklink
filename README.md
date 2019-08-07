@@ -27,7 +27,7 @@ First you need to install the project:
 npm i ngx-quicklink --save
 ```
 
-After that import the `QuicklinkModule` to the `AppComponent`, and use the `QuicklinkStrategy` as `preloadingStrategy` in the router's configuration. For example:
+After that import the `QuicklinkModule` to the `AppModule`, and use the `QuicklinkStrategy` as `preloadingStrategy` in the router's configuration. For example:
 
 ```ts
 // ...
