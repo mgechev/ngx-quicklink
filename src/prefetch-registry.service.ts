@@ -8,9 +8,13 @@ import {
 } from '@angular/router';
 import { Injectable } from '@angular/core';
 
+// Using a global registry so we can keep it populated across lazy-loaded
+// modules with different parent injectors which create instance of the registry.
+const globalRegistry: UrlTree[] = [];
+
 @Injectable()
 export class PrefetchRegistry {
-  private trees: UrlTree[] = [];
+  private trees: UrlTree[] = globalRegistry;
   constructor(private router: Router) {}
 
   add(tree: UrlTree) {
