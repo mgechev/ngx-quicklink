@@ -52,10 +52,12 @@ export class ObservableLinkHandler implements LinkHandlerStrategy {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const link = entry.target as HTMLAnchorElement;
-            this.queue.add(this.elementLink.get(link).urlTree);
+            const routerLink = this.elementLink.get(link);
+            this.queue.add(routerLink.urlTree);
             this.observer.unobserve(link);
             requestIdleCallback(() => {
               this.loader.preload().subscribe(() => void 0);
+              this.queue.remove(routerLink.urlTree);
             });
           }
         });
