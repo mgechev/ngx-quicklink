@@ -1,5 +1,13 @@
-import { Directive, ElementRef, Optional, Inject, OnChanges, OnInit
-  , OnDestroy, Input } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Optional,
+  Inject,
+  OnChanges,
+  OnDestroy,
+  Input,
+  SimpleChanges
+} from '@angular/core';
 import { RouterLink, RouterLinkWithHref } from '@angular/router';
 import { LinkHandler } from './link-handler.service';
 import { LinkHandlerStrategy } from './link-handler-strategy';
@@ -7,7 +15,7 @@ import { LinkHandlerStrategy } from './link-handler-strategy';
 @Directive({
   selector: '[routerLink]'
 })
-export class LinkDirective implements OnInit, OnChanges, OnDestroy {
+export class LinkDirective implements OnChanges, OnDestroy {
   @Input() routerLink: string;
   private rl: RouterLink | RouterLinkWithHref;
   private linkHandler: LinkHandlerStrategy;
@@ -22,13 +30,11 @@ export class LinkDirective implements OnInit, OnChanges, OnDestroy {
     this.rl = link || linkWithHref;
   }
 
-  ngOnInit() {
-    this.linkHandler.register(this);
-  }
-
-  ngOnChanges() {
-    this.linkHandler.unregister(this);
-    this.linkHandler.register(this);
+  ngOnChanges(c: SimpleChanges) {
+    if (c.routerLink) {
+      this.linkHandler.unregister(this);
+      this.linkHandler.register(this);
+    }
   }
 
   ngOnDestroy() {

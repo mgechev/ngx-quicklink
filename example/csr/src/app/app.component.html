@@ -1,2 +1,2 @@
-<a routerLink="">Root</a><a routerLink="home">Home</a>
+<a routerLink="">Root</a><a *ngIf="visible" [routerLink]="path">Home</a>
 <router-outlet></router-outlet>

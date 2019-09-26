@@ -39,8 +39,6 @@ const requestIdleCallback =
       }
     : () => {};
 
-const cancelIdleCallback =
-  typeof window !== 'undefined' ? window.cancelIdleCallback || clearTimeout : () => {};
 const observerSupported = () =>
   typeof window !== 'undefined' ? !!(window as any).IntersectionObserver : false;
 
@@ -48,10 +46,6 @@ export const LinkHandler = new InjectionToken('LinkHandler');
 
 @Injectable()
 export class ObservableLinkHandler implements LinkHandlerStrategy {
-  private registerIdle: any;
-  private unregisterIdle: any;
-  private registerBuffer: Element[] = [];
-  private unregisterBuffer: Element[] = [];
   private elementLink = new Map<Element, LinkDirective>();
   private observer: IntersectionObserver | null = observerSupported()
     ? new IntersectionObserver(entries => {
@@ -72,22 +66,15 @@ export class ObservableLinkHandler implements LinkHandlerStrategy {
 
   register(el: LinkDirective) {
     this.elementLink.set(el.element, el);
-    cancelIdleCallback(this.registerIdle);
-    this.registerBuffer.push(el.element);
-    this.registerIdle = requestIdleCallback(() => {
-      this.registerBuffer.forEach(e => this.observer.observe(e));
-      this.registerBuffer = [];
-    });
+    this.observer.observe(el.element);
   }
 
+  // First call to unregister will not hit this.
   unregister(el: LinkDirective) {
-    this.elementLink.delete(el.element);
-    cancelIdleCallback(this.unregisterIdle);
-    this.unregisterBuffer.push(el.element);
-    this.unregisterIdle = requestIdleCallback(() => {
-      this.unregisterBuffer.forEach(e => this.observer.unobserve(e));
-      this.unregisterBuffer = [];
-    });
+    if (this.elementLink.has(el.element)) {
+      this.observer.unobserve(el.element);
+      this.elementLink.delete(el.element);
+    }
   }
 
   supported() {

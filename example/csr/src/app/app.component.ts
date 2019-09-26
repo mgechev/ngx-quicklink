@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'csr';
+  visible = true;
+  path = '';
+  constructor() {
+    setTimeout(() => this.path = 'home', 1000);
+  }
 }
