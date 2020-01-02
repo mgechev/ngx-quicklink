@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PreloadingStrategy, Router, Route } from '@angular/router';
+import { PreloadingStrategy, Router, Route, PRIMARY_OUTLET } from '@angular/router';
 import { PrefetchRegistry } from './prefetch-registry.service';
 import { EMPTY } from 'rxjs';
 
@@ -52,11 +52,21 @@ const findPath = (config: Route[], route: Route): string => {
       config.push(r);
     });
   }
-  const segments: string[] = [];
+  let path = '';
   let current = route;
+
   while (current) {
-    segments.unshift(current.path);
+    if (isPrimaryRoute(current)) {
+      path = `/${current.path}${path}`;
+    } else {
+      path = `/(${current.outlet}:${current.path}${path})`;
+    }
     current = parent.get(current);
   }
-  return '/' + segments.join('/');
+
+  return path;
 };
+
+function isPrimaryRoute(route: Route) {
+  return route.outlet === PRIMARY_OUTLET || !route.outlet;
+}

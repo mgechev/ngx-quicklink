@@ -1,0 +1,7 @@
+.side {
+    position: fixed;
+    right: 0;
+    top: calc(50% - 100px);
+    height: 200px;
+    border: 1px solid #000;
+}

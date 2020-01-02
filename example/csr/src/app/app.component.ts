@@ -8,8 +8,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'csr';
   visible = true;
-  path = '';
+  primaryRoutePath = '';
+  secondaryRoutePath = [];
   constructor() {
-    setTimeout(() => this.path = 'home', 1000);
+    setTimeout(() => this.primaryRoutePath = 'home', 1000);
+    setTimeout(() => this.secondaryRoutePath = ['', { outlets: { side: ['social'] } }], 2000);
   }
 }
