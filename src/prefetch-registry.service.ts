@@ -58,18 +58,20 @@ function containsSegmentGroup(
     return true;
   } else if (container.segments.length === containeePaths.length) {
     if (!equalPath(container.segments, containeePaths)) return false;
+    if (!containee.hasChildren()) return true;
+
     for (const c in containee.children) {
-      if (!container.children[c]) return false;
+      if (!container.children[c]) break;
       if (
-        !containsSegmentGroup(
+        containsSegmentGroup(
           container.children[c],
           containee.children[c],
           containee.children[c].segments
         )
       )
-        return false;
+        return true;
     }
-    return true;
+    return false;
   } else {
     const current = containeePaths.slice(0, container.segments.length);
     const next = containeePaths.slice(container.segments.length);

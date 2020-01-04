@@ -12,6 +12,12 @@ const routes: Routes = [
     path: 'about',
     loadChildren: () =>
       import('./home/about/about.module').then(m => m.AboutModule)
+  },
+  {
+    path: 'social',
+    loadChildren: () =>
+        import('./social/social.module').then(m => m.SocialModule),
+    outlet: 'side'
   }
 ];
 

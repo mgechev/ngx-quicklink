@@ -1,2 +1,11 @@
-<a routerLink="">Root</a><a *ngIf="visible" [routerLink]="path">Home</a>
+<div>
+    <a routerLink="">Root</a><a *ngIf="visible" [routerLink]="primaryRoutePath">Home</a>
+</div>
 <router-outlet></router-outlet>
+
+<div>
+    <a [routerLink]="secondaryRoutePath">Social</a>
+</div>
+<div class="side">
+    <router-outlet name="side"></router-outlet>
+</div>
