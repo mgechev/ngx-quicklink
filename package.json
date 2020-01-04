@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/ng-packagr/package.schema.json",
   "name": "ngx-quicklink",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Quicklink for Angular",
   "keywords": [
     "angular",
@@ -17,7 +17,7 @@
   "main": "index.umd.js",
   "module": "index.js",
   "scripts": {
-    "start": "nodemon -e ts --watch src --exec \"npm run release\"",
+    "start": "nodemon -e ts --watch src --exec \"npm run build\"",
     "format": "prettier --single-quote --write src/*.ts",
     "build": "ng-packagr -p package.json"
   },
