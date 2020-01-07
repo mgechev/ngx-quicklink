@@ -94,9 +94,13 @@ Alternatively, see the [Intersection Observer polyfill](https://github.com/w3c/I
 
 ## Contributors
 
-[<img alt="mgechev" src="https://avatars1.githubusercontent.com/u/455023?v=4&s=117" width="117">](https://github.com/mgechev) |[<img alt="wKoza" src="https://avatars2.githubusercontent.com/u/11403260?v=4&s=117" width="117">](https://github.com/wKoza) |[<img alt="rolaveric" src="https://avatars1.githubusercontent.com/u/960670?v=4&s=117" width="117">](https://github.com/rolaveric) |[<img alt="thekiba" src="https://avatars0.githubusercontent.com/u/1910515?v=4&s=117" width="117">](https://github.com/thekiba) |[<img alt="maktarsis" src="https://avatars1.githubusercontent.com/u/21989873?v=4&s=117" width="117">](https://github.com/maktarsis) |[<img alt="mehmet-erim" src="https://avatars0.githubusercontent.com/u/34455572?v=4&s=117" width="117">](https://github.com/mehmet-erim) |
+[<img alt="mgechev" src="https://avatars1.githubusercontent.com/u/455023?v=4&s=117" width="117">](https://github.com/mgechev) |[<img alt="dependabot[bot]" src="https://avatars0.githubusercontent.com/in/29110?v=4&s=117" width="117">](https://github.com/apps/dependabot) |[<img alt="wKoza" src="https://avatars2.githubusercontent.com/u/11403260?v=4&s=117" width="117">](https://github.com/wKoza) |[<img alt="rolaveric" src="https://avatars1.githubusercontent.com/u/960670?v=4&s=117" width="117">](https://github.com/rolaveric) |[<img alt="thekiba" src="https://avatars0.githubusercontent.com/u/1910515?v=4&s=117" width="117">](https://github.com/thekiba) |[<img alt="krzysztof-grzybek" src="https://avatars0.githubusercontent.com/u/6236664?v=4&s=117" width="117">](https://github.com/krzysztof-grzybek) |
 :---: |:---: |:---: |:---: |:---: |:---: |
-[mgechev](https://github.com/mgechev) |[wKoza](https://github.com/wKoza) |[rolaveric](https://github.com/rolaveric) |[thekiba](https://github.com/thekiba) |[maktarsis](https://github.com/maktarsis) |[mehmet-erim](https://github.com/mehmet-erim) |
+[mgechev](https://github.com/mgechev) |[dependabot[bot]](https://github.com/apps/dependabot) |[wKoza](https://github.com/wKoza) |[rolaveric](https://github.com/rolaveric) |[thekiba](https://github.com/thekiba) |[krzysztof-grzybek](https://github.com/krzysztof-grzybek) |
+
+[<img alt="maktarsis" src="https://avatars1.githubusercontent.com/u/21989873?v=4&s=117" width="117">](https://github.com/maktarsis) |[<img alt="mehmet-erim" src="https://avatars0.githubusercontent.com/u/34455572?v=4&s=117" width="117">](https://github.com/mehmet-erim) |
+:---: |:---: |
+[maktarsis](https://github.com/maktarsis) |[mehmet-erim](https://github.com/mehmet-erim) |
 
 ## License
 
