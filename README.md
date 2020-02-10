@@ -51,7 +51,7 @@ If you want to add a route in the ignore list so that `ngx-quicklink` will not p
 export const routes: Routes = [
   {
     path: 'contact',
-    loadChildren: import(() => './contact/contact.module').then(m => m.ContactModule)',
+    loadChildren: import(() => './contact/contact.module').then(m => m.ContactModule),
     data: {
       preload: false
     }
