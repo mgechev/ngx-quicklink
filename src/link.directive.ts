@@ -16,7 +16,7 @@ import { LinkHandlerStrategy } from './link-handler-strategy';
   selector: '[routerLink]'
 })
 export class LinkDirective implements OnChanges, OnDestroy {
-  @Input() routerLink: string;
+  @Input() routerLink: Pick<RouterLink | RouterLinkWithHref, 'routerLink'>['routerLink'];
   private rl: RouterLink | RouterLinkWithHref;
   private linkHandler: LinkHandlerStrategy;
 
