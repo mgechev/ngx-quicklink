@@ -98,9 +98,9 @@ Alternatively, see the [Intersection Observer polyfill](https://github.com/w3c/I
 :---: |:---: |:---: |:---: |:---: |:---: |
 [mgechev](https://github.com/mgechev) |[dependabot[bot]](https://github.com/apps/dependabot) |[wKoza](https://github.com/wKoza) |[rolaveric](https://github.com/rolaveric) |[thekiba](https://github.com/thekiba) |[Flyrell](https://github.com/Flyrell) |
 
-[<img alt="Niaro" src="https://avatars2.githubusercontent.com/u/7147943?v=4&s=117" width="117">](https://github.com/Niaro) |[<img alt="krzysztof-grzybek" src="https://avatars0.githubusercontent.com/u/6236664?v=4&s=117" width="117">](https://github.com/krzysztof-grzybek) |[<img alt="maktarsis" src="https://avatars1.githubusercontent.com/u/21989873?v=4&s=117" width="117">](https://github.com/maktarsis) |[<img alt="mehmet-erim" src="https://avatars0.githubusercontent.com/u/34455572?v=4&s=117" width="117">](https://github.com/mehmet-erim) |
-:---: |:---: |:---: |:---: |
-[Niaro](https://github.com/Niaro) |[krzysztof-grzybek](https://github.com/krzysztof-grzybek) |[maktarsis](https://github.com/maktarsis) |[mehmet-erim](https://github.com/mehmet-erim) |
+[<img alt="krzysztof-grzybek" src="https://avatars0.githubusercontent.com/u/6236664?v=4&s=117" width="117">](https://github.com/krzysztof-grzybek) |[<img alt="maktarsis" src="https://avatars1.githubusercontent.com/u/21989873?v=4&s=117" width="117">](https://github.com/maktarsis) |[<img alt="mehmet-erim" src="https://avatars0.githubusercontent.com/u/34455572?v=4&s=117" width="117">](https://github.com/mehmet-erim) |
+:---: |:---: |:---: |
+[krzysztof-grzybek](https://github.com/krzysztof-grzybek) |[maktarsis](https://github.com/maktarsis) |[mehmet-erim](https://github.com/mehmet-erim) |
 
 ## License
 
