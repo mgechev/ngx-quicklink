@@ -13,19 +13,14 @@ type RequestIdleCallbackDeadline = {
   timeRemaining: (() => number);
 };
 
-declare global {
-  interface Window {
-    requestIdleCallback: ((
-      callback: ((deadline: RequestIdleCallbackDeadline) => void),
-      opts?: RequestIdleCallbackOptions
-    ) => RequestIdleCallbackHandle);
-    cancelIdleCallback: ((handle: RequestIdleCallbackHandle) => void);
-  }
-}
+type RequestIdleCallback = ((
+  callback: ((deadline: RequestIdleCallbackDeadline) => void),
+  opts?: RequestIdleCallbackOptions
+) => RequestIdleCallbackHandle);
 
-const requestIdleCallback =
+const requestIdleCallback: RequestIdleCallback =
   typeof window !== 'undefined'
-    ? window.requestIdleCallback ||
+    ? (window as any).requestIdleCallback ||
       function(cb: Function) {
         const start = Date.now();
         return setTimeout(function() {
