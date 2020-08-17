@@ -1,4 +1,4 @@
-import { Injectable, InjectionToken } from '@angular/core';
+import { Injectable, InjectionToken, NgZone } from '@angular/core';
 import { LinkDirective } from './link.directive';
 import { RouterPreloader } from '@angular/router';
 import { LinkHandlerStrategy } from './link-handler-strategy';
@@ -62,11 +62,13 @@ export class ObservableLinkHandler implements LinkHandlerStrategy {
       })
     : null;
 
-  constructor(private loader: RouterPreloader, private queue: PrefetchRegistry) {}
+  constructor(private loader: RouterPreloader, private queue: PrefetchRegistry, private ngZone: NgZone) {}
 
   register(el: LinkDirective) {
     this.elementLink.set(el.element, el);
-    this.observer.observe(el.element);
+    this.ngZone.runOutsideAngular(() => {
+      this.observer.observe(el.element);
+    });
   }
 
   // First call to unregister will not hit this.
