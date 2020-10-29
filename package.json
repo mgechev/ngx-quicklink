@@ -43,12 +43,12 @@
   "devDependencies": {
     "@angular/common": "^8.0.0-rc.0",
     "@angular/compiler": "^8.0.0-rc.0",
-    "@angular/compiler-cli": "^8.0.0-rc.0",
+    "@angular/compiler-cli": "^10.2.1",
     "@angular/core": "^8.0.0-rc.0",
     "@angular/platform-browser": "^8.0.0-rc.0",
     "@angular/router": "^8.0.0-rc.0",
     "ng-packagr": "^5.4.3",
-    "nodemon": "^1.18.10",
+    "nodemon": "^2.0.6",
     "prettier": "^1.15.3",
     "rxjs": "^6.4.0",
     "typescript": "^3.4.0"
