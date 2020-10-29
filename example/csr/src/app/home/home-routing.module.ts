@@ -7,16 +7,17 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    pathMatch: 'full'
+    children: [
+      {
+        path: 'about',
+        loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
+      },
+      {
+        path: 'product',
+        loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
+      }
+    ]
   },
-  {
-    path: 'about',
-    loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
-  },
-  {
-    path: 'product',
-    loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
-  }
 ];
 
 @NgModule({
