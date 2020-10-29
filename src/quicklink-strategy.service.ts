@@ -64,7 +64,7 @@ const findPath = (config: Route[], route: Route): string => {
     current = parent.get(current);
   }
 
-  return path;
+  return path.replace(/\/\//, '/');
 };
 
 function isPrimaryRoute(route: Route) {
