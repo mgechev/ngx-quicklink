@@ -69,6 +69,12 @@ cd ngx-quicklink && npm i && npm run release
 cd example && npm i && ng serve
 ```
 
+## Debugging
+
+**Not getting routes preloaded?** Most likely the problem comes from a missing import of the `QuicklinkModule`. The `QuicklinkModule` exports a `LinkDirective` which matches the `[routerLink]` selector. It'll hook into all your router links in the scope of the module and observe their visibility. If you've not imported the `QuicklinkModule` correctly, this directive will be missing and the quicklink preloading strategy will not work.
+
+**How to verify Angular has made my links "quicklinks"?** Inspect a router link and check if it has `ngx-ql` attribute. If it does not, make sure you import `QuicklinkModule` in the module that defines the compilation context of the template where the router link is. Alternatively, if the `ngx-ql` attribute is there, but the prefetching does not work as expected, please open an issue.
+
 ## Polyfills
 
 `ngx-quicklink`:
