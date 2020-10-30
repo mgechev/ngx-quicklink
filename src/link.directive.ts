@@ -28,6 +28,9 @@ export class LinkDirective implements OnChanges, OnDestroy {
   ) {
     this.linkHandler = this.linkHandlers.filter(h => h.supported()).shift();
     this.rl = link || linkWithHref;
+    if (this.element && this.element.setAttribute) {
+      this.element.setAttribute('ngx-ql', '');
+    }
   }
 
   ngOnChanges(c: SimpleChanges) {
