@@ -21,10 +21,6 @@ export class PrefetchRegistry {
     this.trees.push(tree);
   }
 
-  remove(tree: UrlTree) {
-    this.trees.splice(this.trees.indexOf(tree), 1);
-  }
-
   shouldPrefetch(url: string) {
     const tree = this.router.parseUrl(url);
     return this.trees.some(containsTree.bind(null, tree));

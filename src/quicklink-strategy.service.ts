@@ -7,7 +7,10 @@ import { EMPTY } from 'rxjs';
 export class QuicklinkStrategy implements PreloadingStrategy {
   loading = new Set<Route>();
 
-  constructor(private queue: PrefetchRegistry, private router: Router) {}
+  constructor(
+    private registry: PrefetchRegistry,
+    private router: Router,
+  ) {}
 
   preload(route: Route, load: Function) {
     if (this.loading.has(route)) {
@@ -24,7 +27,7 @@ export class QuicklinkStrategy implements PreloadingStrategy {
       return EMPTY;
     }
     const fullPath = findPath(this.router.config, route);
-    if (this.queue.shouldPrefetch(fullPath)) {
+    if (this.registry.shouldPrefetch(fullPath)) {
       this.loading.add(route);
       return load();
     }
