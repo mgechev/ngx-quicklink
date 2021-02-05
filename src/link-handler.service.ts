@@ -51,18 +51,21 @@ export class ObservableLinkHandler implements LinkHandlerStrategy {
             const routerLink = this.elementLink.get(link);
             if ( !routerLink || !routerLink.urlTree ) return;
 
-            this.queue.add(routerLink.urlTree);
+            this.registry.add(routerLink.urlTree);
             this.observer.unobserve(link);
             requestIdleCallback(() => {
               this.loader.preload().subscribe(() => void 0);
-              this.queue.remove(routerLink.urlTree);
             });
           }
         });
       })
     : null;
 
-  constructor(private loader: RouterPreloader, private queue: PrefetchRegistry, private ngZone: NgZone) {}
+  constructor(
+    private loader: RouterPreloader,
+    private registry: PrefetchRegistry,
+    private ngZone: NgZone,
+  ) {}
 
   register(el: LinkDirective) {
     this.elementLink.set(el.element, el);
@@ -82,14 +85,18 @@ export class ObservableLinkHandler implements LinkHandlerStrategy {
   supported() {
     return observerSupported();
   }
+
 }
 
 @Injectable()
 export class PreloadLinkHandler implements LinkHandlerStrategy {
-  constructor(private loader: RouterPreloader, private queue: PrefetchRegistry) {}
+  constructor(
+    private loader: RouterPreloader,
+    private registry: PrefetchRegistry,
+  ) {}
 
   register(el: LinkDirective) {
-    this.queue.add(el.urlTree);
+    this.registry.add(el.urlTree);
     requestIdleCallback(() => this.loader.preload().subscribe(() => void 0));
   }
 

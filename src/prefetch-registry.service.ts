@@ -21,10 +21,6 @@ export class PrefetchRegistry {
     this.trees.push(tree);
   }
 
-  remove(tree: UrlTree) {
-    this.trees.splice(this.trees.indexOf(tree), 1);
-  }
-
   shouldPrefetch(url: string) {
     const tree = this.router.parseUrl(url);
     return this.trees.some(containsTree.bind(null, tree));
@@ -39,7 +35,7 @@ function containsQueryParams(container: Params, containee: Params): boolean {
   );
 }
 
-function containsTree(containee: UrlTree, container: UrlTree): boolean {
+export function containsTree(containee: UrlTree, container: UrlTree): boolean {
   return (
     containsQueryParams(container.queryParams, containee.queryParams) &&
     containsSegmentGroup(container.root, containee.root, containee.root.segments)
