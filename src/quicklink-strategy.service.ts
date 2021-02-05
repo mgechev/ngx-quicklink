@@ -14,7 +14,7 @@ export class QuicklinkStrategy implements PreloadingStrategy {
       // Don't preload the same route twice
       return EMPTY;
     }
-    const conn = typeof window !== 'undefined' ? (navigator as any).connection : undefined;
+    const conn = typeof navigator !== 'undefined' ? (navigator as any).connection : undefined;
     if (conn) {
       // Don't preload if the user is on 2G. or if Save-Data is enabled..
       if ((conn.effectiveType || '').includes('2g') || conn.saveData) return EMPTY;
