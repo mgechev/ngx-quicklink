@@ -1,5 +1,4 @@
 {
-  "$schema": "./node_modules/ng-packagr/package.schema.json",
   "name": "ngx-quicklink",
   "version": "0.2.7",
   "description": "Quicklink for Angular",
@@ -19,12 +18,7 @@
   "scripts": {
     "start": "nodemon -e ts --watch src --exec \"npm run build\"",
     "format": "prettier --single-quote --write src/*.ts",
-    "build": "ng-packagr -p package.json"
-  },
-  "ngPackage": {
-    "lib": {
-      "entryFile": "public_api.ts"
-    }
+    "build": "ng-packagr -p ./src/ng-package.json"
   },
   "repository": {
     "type": "git",
@@ -36,21 +30,17 @@
     "url": "https://github.com/mgechev/ngx-quicklink/issues"
   },
   "homepage": "https://github.com/mgechev/ngx-quicklink#readme",
-  "peerDependencies": {
-    "@angular/common": ">=6.0.0",
-    "@angular/router": ">=6.0.0"
-  },
   "devDependencies": {
-    "@angular/common": "11.1.0",
-    "@angular/compiler": "11.1.0",
-    "@angular/compiler-cli": "11.1.0",
-    "@angular/core": "11.1.0",
-    "@angular/platform-browser": "11.1.0",
-    "@angular/router": "11.1.0",
-    "ng-packagr": "11.1.0",
-    "nodemon": "^2.0.6",
+    "@angular/common": "13.1.3",
+    "@angular/compiler": "13.1.3",
+    "@angular/compiler-cli": "13.1.3",
+    "@angular/core": "13.1.3",
+    "@angular/platform-browser": "13.1.3",
+    "@angular/router": "13.1.3",
+    "ng-packagr": "13.1.3",
+    "nodemon": "^2.0.15",
     "prettier": "^1.15.3",
-    "rxjs": "^6.5.3",
-    "typescript": "^4.1.0"
+    "rxjs": "^7.5.2",
+    "typescript": "^4.3.5"
   }
 }
