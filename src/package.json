@@ -1,0 +1,31 @@
+{
+    "name": "ngx-quicklink",
+    "version": "0.2.7",
+    "description": "Quicklink for Angular",
+    "keywords": [
+      "angular",
+      "prefetching",
+      "router",
+      "performance",
+      "prefetch",
+      "background",
+      "speed",
+      "fetch",
+      "intersectionobserver"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/mgechev/ngx-quicklink.git"
+    },
+    "author": "Minko Gechev <mgechev@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/mgechev/ngx-quicklink/issues"
+    },
+    "homepage": "https://github.com/mgechev/ngx-quicklink#readme",
+    "peerDependencies": {
+        "@angular/core": ">13.0.0",
+        "@angular/router": ">13.0.0",
+        "rxjs": ">7.0.0"
+    }
+  }

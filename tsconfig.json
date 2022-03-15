@@ -20,5 +20,5 @@
       "dom"
     ],
   },
-  "files": ["src/index.ts"]
+  "files": ["src/public-api.ts"]
 }
