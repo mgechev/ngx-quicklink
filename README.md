@@ -60,6 +60,21 @@ export const routes: Routes = [
 
 ```
 
+If you want to force preload a route immediately, use the `data` property:
+
+```ts
+export const routes: Routes = [
+  {
+    path: 'contact',
+    loadChildren: import(() => './contact/contact.module').then(m => m.ContactModule),
+    data: {
+      preload: true
+    }
+  }
+];
+
+```
+
 **Note that to make the module available in lazy-loaded modules as well you need to import it in a shared module and export it.** Look at [this commit](https://github.com/mgechev/angular-realworld-example-app-qucklink/commit/33ea101c7d84bb5ca086f107148bbc958659f83f) to see how `ngx-quicklink` is integrated in the [angular-realworld-example-app](https://github.com/gothinkster/angular-realworld-example-app).
 
 For a demo, look at the `example` directory. To run the project use:
