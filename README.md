@@ -62,13 +62,6 @@ export const routes: Routes = [
 
 **Note that to make the module available in lazy-loaded modules as well you need to import it in a shared module and export it.** Look at [this commit](https://github.com/mgechev/angular-realworld-example-app-qucklink/commit/33ea101c7d84bb5ca086f107148bbc958659f83f) to see how `ngx-quicklink` is integrated in the [angular-realworld-example-app](https://github.com/gothinkster/angular-realworld-example-app).
 
-For a demo, look at the `example` directory. To run the project use:
-
-```shell
-cd ngx-quicklink && npm i && npm run release
-cd example && npm i && ng serve
-```
-
 ## Debugging
 
 **Not getting routes preloaded?** Most likely the problem comes from a missing import of the `QuicklinkModule`. The `QuicklinkModule` exports a `LinkDirective` which matches the `[routerLink]` selector. It'll hook into all your router links in the scope of the module and observe their visibility. If you've not imported the `QuicklinkModule` correctly, this directive will be missing and the quicklink preloading strategy will not work.
@@ -98,6 +91,25 @@ Alternatively, see the [Intersection Observer polyfill](https://github.com/w3c/I
 
 >The prefetching behavior of Guess.js would most likely be more accurate compared to ngx-quicklink, which will reduce the overfetching. Guess.js, however, may take a little more effort to setup. In case you don't want to integrate with the analytics of your website ngx-quicklink is the right choice for you.
 
+## Developing & releasing
+
+For a demo:
+
+```shell
+git clone git@github.com:mgechev/ngx-quicklink
+cd ngx-quicklink && npm i
+ng build --project ngx-quicklink
+ng serve
+```
+
+To release first update the package version and after that:
+
+```shell
+npm run release
+cd dist/ngx-quicklink
+npm publish
+```
+
 ## Contributors
 
 [<img alt="mgechev" src="https://avatars1.githubusercontent.com/u/455023?v=4&s=117" width="117">](https://github.com/mgechev) |[<img alt="wKoza" src="https://avatars2.githubusercontent.com/u/11403260?v=4&s=117" width="117">](https://github.com/wKoza) |[<img alt="rolaveric" src="https://avatars1.githubusercontent.com/u/960670?v=4&s=117" width="117">](https://github.com/rolaveric) |[<img alt="thekiba" src="https://avatars0.githubusercontent.com/u/1910515?v=4&s=117" width="117">](https://github.com/thekiba) |[<img alt="Flyrell" src="https://avatars2.githubusercontent.com/u/19550608?v=4&s=117" width="117">](https://github.com/Flyrell) |[<img alt="Niaro" src="https://avatars2.githubusercontent.com/u/7147943?v=4&s=117" width="117">](https://github.com/Niaro) |
@@ -111,3 +123,4 @@ Alternatively, see the [Intersection Observer polyfill](https://github.com/w3c/I
 ## License
 
 MIT
+

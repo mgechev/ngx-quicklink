@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "release": "cp README.md projects/ngx-quicklink && ng build --project ngx-quicklink"
   },
   "private": true,
   "dependencies": {
