@@ -102,7 +102,7 @@ ng build --project ngx-quicklink
 ng serve
 ```
 
-To release:
+To release first update the package version and after that:
 
 ```shell
 npm run release
