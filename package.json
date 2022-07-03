@@ -1,46 +1,39 @@
 {
   "name": "ngx-quicklink",
-  "version": "0.2.7",
-  "description": "Quicklink for Angular",
-  "keywords": [
-    "angular",
-    "prefetching",
-    "router",
-    "performance",
-    "prefetch",
-    "background",
-    "speed",
-    "fetch",
-    "intersectionobserver"
-  ],
-  "main": "index.umd.js",
-  "module": "index.js",
+  "version": "0.0.0",
   "scripts": {
-    "start": "nodemon -e ts --watch src --exec \"npm run build\"",
-    "format": "prettier --single-quote --write src/*.ts",
-    "build": "ng-packagr -p ./src/ng-package.json"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mgechev/ngx-quicklink.git"
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^14.0.0",
+    "@angular/common": "^14.0.0",
+    "@angular/compiler": "^14.0.0",
+    "@angular/core": "^14.0.0",
+    "@angular/forms": "^14.0.0",
+    "@angular/platform-browser": "^14.0.0",
+    "@angular/platform-browser-dynamic": "^14.0.0",
+    "@angular/router": "^14.0.0",
+    "rxjs": "~7.5.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4"
   },
-  "author": "Minko Gechev <mgechev@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mgechev/ngx-quicklink/issues"
-  },
-  "homepage": "https://github.com/mgechev/ngx-quicklink#readme",
   "devDependencies": {
-    "@angular/common": "13.1.3",
-    "@angular/compiler": "13.1.3",
-    "@angular/compiler-cli": "13.1.3",
-    "@angular/core": "13.1.3",
-    "@angular/platform-browser": "13.1.3",
-    "@angular/router": "13.1.3",
-    "ng-packagr": "13.1.3",
-    "nodemon": "^2.0.15",
-    "prettier": "^1.15.3",
-    "rxjs": "^7.5.2",
-    "typescript": "^4.3.5"
+    "@angular-devkit/build-angular": "^14.0.4",
+    "@angular/cli": "~14.0.4",
+    "@angular/compiler-cli": "^14.0.0",
+    "@types/jasmine": "~4.0.0",
+    "jasmine-core": "~4.1.0",
+    "karma": "~6.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.0.0",
+    "karma-jasmine-html-reporter": "~1.7.0",
+    "ng-packagr": "^14.0.0",
+    "typescript": "~4.7.2"
   }
 }
