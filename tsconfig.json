@@ -13,7 +13,7 @@
     "sourceMap": true,
     "paths": {
       "ngx-quicklink": [
-        "dist/ngx-quicklink"
+        "projects/ngx-quicklink/src/public-api.ts"
       ]
     },
     "declaration": false,
