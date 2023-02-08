@@ -8,7 +8,7 @@ import {
   Input,
   SimpleChanges
 } from '@angular/core';
-import { RouterLink, RouterLinkWithHref } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { LinkHandler } from './link-handler.service';
 import { LinkHandlerStrategy } from './link-handler-strategy';
 
@@ -16,15 +16,15 @@ import { LinkHandlerStrategy } from './link-handler-strategy';
   selector: '[routerLink]'
 })
 export class LinkDirective implements OnChanges, OnDestroy {
-  @Input() routerLink: Pick<RouterLink | RouterLinkWithHref, 'routerLink'>['routerLink'];
-  private rl: RouterLink | RouterLinkWithHref;
+  @Input() routerLink: Pick<RouterLink | RouterLink, 'routerLink'>['routerLink'];
+  private rl: RouterLink | RouterLink;
   private linkHandler: LinkHandlerStrategy | undefined;
 
   constructor(
     @Inject(LinkHandler) private linkHandlers: LinkHandlerStrategy[],
     private el: ElementRef,
     @Optional() link: RouterLink,
-    @Optional() linkWithHref: RouterLinkWithHref
+    @Optional() linkWithHref: RouterLink
   ) {
     this.linkHandler = this.linkHandlers.filter(h => h.supported()).shift();
     this.rl = link || linkWithHref;
