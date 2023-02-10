@@ -1,25 +1,31 @@
 import { NgModule } from '@angular/core';
+import {
+  ObservableLinkHandler,
+  PreloadLinkHandler,
+  LinkHandler,
+} from './link-handler.service';
 import { LinkDirective } from './link.directive';
-import { ObservableLinkHandler, PreloadLinkHandler, LinkHandler } from './link-handler.service';
 import { PrefetchRegistry } from './prefetch-registry.service';
 import { QuicklinkStrategy } from './quicklink-strategy.service';
 
+export const quicklinkProviders = [
+  {
+    provide: LinkHandler,
+    useClass: ObservableLinkHandler,
+    multi: true,
+  },
+  {
+    provide: LinkHandler,
+    useClass: PreloadLinkHandler,
+    multi: true,
+  },
+  PrefetchRegistry,
+  QuicklinkStrategy,
+];
+
 @NgModule({
-  declarations: [LinkDirective],
-  providers: [
-    {
-      provide: LinkHandler,
-      useClass: ObservableLinkHandler,
-      multi: true
-    },
-    {
-      provide: LinkHandler,
-      useClass: PreloadLinkHandler,
-      multi: true
-    },
-    PrefetchRegistry,
-    QuicklinkStrategy
-  ],
-  exports: [LinkDirective]
+  imports: [LinkDirective],
+  exports: [LinkDirective],
+  providers: quicklinkProviders,
 })
 export class QuicklinkModule {}

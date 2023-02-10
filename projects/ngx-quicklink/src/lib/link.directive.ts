@@ -13,7 +13,8 @@ import { LinkHandler } from './link-handler.service';
 import { LinkHandlerStrategy } from './link-handler-strategy';
 
 @Directive({
-  selector: '[routerLink]'
+  selector: '[routerLink]',
+  standalone: true
 })
 export class LinkDirective implements OnChanges, OnDestroy {
   @Input() routerLink: Pick<RouterLink | RouterLink, 'routerLink'>['routerLink'];

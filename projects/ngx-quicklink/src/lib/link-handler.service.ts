@@ -39,7 +39,7 @@ const observerSupported = () =>
 
 export const LinkHandler = new InjectionToken('LinkHandler');
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ObservableLinkHandler implements LinkHandlerStrategy {
   private elementLink = new Map<Element, LinkDirective>();
   private observer: IntersectionObserver | null = observerSupported()
@@ -97,7 +97,7 @@ export class ObservableLinkHandler implements LinkHandlerStrategy {
 
 }
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class PreloadLinkHandler implements LinkHandlerStrategy {
   constructor(
     private loader: RouterPreloader,

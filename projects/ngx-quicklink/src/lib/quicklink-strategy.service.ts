@@ -3,7 +3,7 @@ import { PreloadingStrategy, Router, Route, PRIMARY_OUTLET } from '@angular/rout
 import { PrefetchRegistry } from './prefetch-registry.service';
 import { EMPTY } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class QuicklinkStrategy implements PreloadingStrategy {
   loading = new Set<Route>();
 
