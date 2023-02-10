@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { QuicklinkModule } from 'ngx-quicklink';
+import { RouterLink } from '@angular/router';
+import { QuicklinkDirective } from 'ngx-quicklink';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, QuicklinkModule],
+  imports: [RouterLink, QuicklinkDirective],
   template: `
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br>
@@ -13,4 +18,5 @@ import { QuicklinkModule } from 'ngx-quicklink';
     <a routerLink="/about">About</a>
   `,
 })
-export default class HomeComponent {}
+export default class HomeComponent {
+}

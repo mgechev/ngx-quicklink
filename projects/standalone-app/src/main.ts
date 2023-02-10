@@ -1,19 +1,25 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
-import { AppComponent } from 'src/app/app.component';
+import { provideRouter, withPreloading } from '@angular/router';
+import { QuicklinkStrategy } from 'ngx-quicklink';
+import { quicklinkProviders } from 'projects/ngx-quicklink/src/lib/quicklink.module';
+import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideRouter([
-      {
-        path: 'about',
-        loadComponent: () => import('./app/about.component').then(c => c.default)
-      },
-      {
-        path: '',
-        pathMatch: 'full',
-        loadComponent: () => import('./app/home.component').then(c => c.default)
-      }
-    ])
-  ]
+    quicklinkProviders,
+    provideRouter(
+      [
+        {
+          path: 'about',
+          loadComponent: () => import('./app/about.component'),
+        },
+        {
+          path: '',
+          pathMatch: 'full',
+          loadComponent: () => import('./app/home.component'),
+        },
+      ],
+      withPreloading(QuicklinkStrategy)
+    ),
+  ],
 });
