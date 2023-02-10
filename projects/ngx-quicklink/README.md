@@ -60,6 +60,40 @@ export const routes: Routes = [
 
 ```
 
+## Standalone components
+
+You can find example [here](https://github.com/mgechev/ngx-quicklink/tree/master/projects/standalone-app).
+
+To use the `ngx-quicklink` directive with standalone components in your `main.ts` add:
+
+```ts
+bootstrapApplication(AppComponent, {
+  providers: [
+    quicklinkProviders,
+    provideRouter([...],
+      withPreloading(QuicklinkStrategy)
+    ),
+  ],
+});
+```
+
+Make sure you import the `QuicklinkDirective` in all your standalone components that use preloading:
+
+```ts
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { QuicklinkDirective } from 'ngx-quicklink';
+
+@Component({
+  standalone: true,
+  imports: [RouterLink, QuicklinkDirective],
+  template: `
+    <a routerLink="/about">About</a>
+  `,
+})
+export default class HomeComponent {}
+```
+
 **Note that to make the module available in lazy-loaded modules as well you need to import it in a shared module and export it.** Look at [this commit](https://github.com/mgechev/angular-realworld-example-app-qucklink/commit/33ea101c7d84bb5ca086f107148bbc958659f83f) to see how `ngx-quicklink` is integrated in the [angular-realworld-example-app](https://github.com/gothinkster/angular-realworld-example-app).
 
 ## Debugging
