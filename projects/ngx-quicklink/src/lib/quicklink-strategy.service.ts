@@ -53,13 +53,15 @@ const findPath = (config: Route[], route: Route): string => {
       if (route && route.children) {
         children = children.concat(route.children);
       }
-      children.forEach((r: Route) => {
-        if (visited.has(r)) return;
-        parent.set(r, el);
-        config.push(r);
-      });
     }
+
+    children.forEach((r) => {
+      if (visited.has(r)) return;
+      parent.set(r, el);
+      config.push(r);
+    });
   }
+
   let path = '';
   let current: Route | undefined = route;
 

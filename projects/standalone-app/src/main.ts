@@ -12,11 +12,31 @@ bootstrapApplication(AppComponent, {
         {
           path: 'about',
           loadComponent: () => import('./app/about.component'),
+          children: [
+            {
+              path: 'sub',
+              loadComponent: () => import('./app/subfolder/subcomponent'),
+            },
+          ],
         },
         {
-          path: '',
+          path: 'home',
           pathMatch: 'full',
           loadComponent: () => import('./app/home.component'),
+        },
+        {
+          path: 'social',
+          loadComponent: () => import('./app/social.component'),
+          outlet: 'side',
+        },
+        {
+          path: 'root',
+          pathMatch: 'full',
+          loadComponent: () => import('./app/root.component'),
+        },
+        {
+          path: '**',
+          redirectTo: 'root',
         },
       ],
       withPreloading(QuicklinkStrategy)

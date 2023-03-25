@@ -5,6 +5,6 @@ import { QuicklinkDirective } from 'ngx-quicklink';
 @Component({
   standalone: true,
   imports: [RouterLink, QuicklinkDirective],
-  template: ` Home Component `,
+  template: ` Root Component `,
 })
-export default class HomeComponent {}
+export default class RootComponent {}
