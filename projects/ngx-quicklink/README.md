@@ -60,40 +60,6 @@ export const routes: Routes = [
 
 ```
 
-## Standalone components
-
-You can find example [here](https://github.com/mgechev/ngx-quicklink/tree/master/projects/standalone-app).
-
-To use the `ngx-quicklink` directive with standalone components in your `main.ts` add:
-
-```ts
-bootstrapApplication(AppComponent, {
-  providers: [
-    quicklinkProviders,
-    provideRouter([...],
-      withPreloading(QuicklinkStrategy)
-    ),
-  ],
-});
-```
-
-Make sure you import the `QuicklinkDirective` in all your standalone components that use preloading:
-
-```ts
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { QuicklinkDirective } from 'ngx-quicklink';
-
-@Component({
-  standalone: true,
-  imports: [RouterLink, QuicklinkDirective],
-  template: `
-    <a routerLink="/about">About</a>
-  `,
-})
-export default class HomeComponent {}
-```
-
 **Note that to make the module available in lazy-loaded modules as well you need to import it in a shared module and export it.** Look at [this commit](https://github.com/mgechev/angular-realworld-example-app-qucklink/commit/33ea101c7d84bb5ca086f107148bbc958659f83f) to see how `ngx-quicklink` is integrated in the [angular-realworld-example-app](https://github.com/gothinkster/angular-realworld-example-app).
 
 ## Debugging
@@ -146,15 +112,18 @@ npm publish
 
 ## Contributors
 
-[<img alt="mgechev" src="https://avatars1.githubusercontent.com/u/455023?v=4&s=117" width="117">](https://github.com/mgechev) |[<img alt="wKoza" src="https://avatars2.githubusercontent.com/u/11403260?v=4&s=117" width="117">](https://github.com/wKoza) |[<img alt="rolaveric" src="https://avatars1.githubusercontent.com/u/960670?v=4&s=117" width="117">](https://github.com/rolaveric) |[<img alt="thekiba" src="https://avatars0.githubusercontent.com/u/1910515?v=4&s=117" width="117">](https://github.com/thekiba) |[<img alt="Flyrell" src="https://avatars2.githubusercontent.com/u/19550608?v=4&s=117" width="117">](https://github.com/Flyrell) |[<img alt="Niaro" src="https://avatars2.githubusercontent.com/u/7147943?v=4&s=117" width="117">](https://github.com/Niaro) |
+[<img alt="mgechev" src="https://avatars.githubusercontent.com/u/455023?v=4&s=117" width="117">](https://github.com/mgechev) |[<img alt="dependabot[bot]" src="https://avatars.githubusercontent.com/in/29110?v=4&s=117" width="117">](https://github.com/apps/dependabot) |[<img alt="wKoza" src="https://avatars.githubusercontent.com/u/11403260?v=4&s=117" width="117">](https://github.com/wKoza) |[<img alt="rolaveric" src="https://avatars.githubusercontent.com/u/960670?v=4&s=117" width="117">](https://github.com/rolaveric) |[<img alt="thekiba" src="https://avatars.githubusercontent.com/u/1910515?v=4&s=117" width="117">](https://github.com/thekiba) |[<img alt="Flyrell" src="https://avatars.githubusercontent.com/u/19550608?v=4&s=117" width="117">](https://github.com/Flyrell) |
 :---: |:---: |:---: |:---: |:---: |:---: |
-[mgechev](https://github.com/mgechev) |[wKoza](https://github.com/wKoza) |[rolaveric](https://github.com/rolaveric) |[thekiba](https://github.com/thekiba) |[Flyrell](https://github.com/Flyrell) |[Niaro](https://github.com/Niaro) |
+[mgechev](https://github.com/mgechev) |[dependabot[bot]](https://github.com/apps/dependabot) |[wKoza](https://github.com/wKoza) |[rolaveric](https://github.com/rolaveric) |[thekiba](https://github.com/thekiba) |[Flyrell](https://github.com/Flyrell) |
 
-[<img alt="krzysztof-grzybek" src="https://avatars0.githubusercontent.com/u/6236664?v=4&s=117" width="117">](https://github.com/krzysztof-grzybek) |[<img alt="retarsis" src="https://avatars1.githubusercontent.com/u/21989873?v=4&s=117" width="117">](https://github.com/retarsis) |[<img alt="mehmet-erim" src="https://avatars0.githubusercontent.com/u/34455572?v=4&s=117" width="117">](https://github.com/mehmet-erim) |[<img alt="pshurygin" src="https://avatars3.githubusercontent.com/u/25816676?v=4&s=117" width="117">](https://github.com/pshurygin) |[<img alt="jlilly" src="https://avatars3.githubusercontent.com/u/2780209?v=4&s=117" width="117">](https://github.com/jlilly) |
-:---: |:---: |:---: |:---: |:---: |
-[krzysztof-grzybek](https://github.com/krzysztof-grzybek) |[retarsis](https://github.com/retarsis) |[mehmet-erim](https://github.com/mehmet-erim) |[pshurygin](https://github.com/pshurygin) |[jlilly](https://github.com/jlilly) |
+[<img alt="Niaro" src="https://avatars.githubusercontent.com/u/7147943?v=4&s=117" width="117">](https://github.com/Niaro) |[<img alt="krzysztof-grzybek" src="https://avatars.githubusercontent.com/u/6236664?v=4&s=117" width="117">](https://github.com/krzysztof-grzybek) |[<img alt="tarsinzer" src="https://avatars.githubusercontent.com/u/21989873?v=4&s=117" width="117">](https://github.com/tarsinzer) |[<img alt="mehmet-erim" src="https://avatars.githubusercontent.com/u/34455572?v=4&s=117" width="117">](https://github.com/mehmet-erim) |[<img alt="Timebutt" src="https://avatars.githubusercontent.com/u/10674081?v=4&s=117" width="117">](https://github.com/Timebutt) |[<img alt="pshurygin" src="https://avatars.githubusercontent.com/u/25816676?v=4&s=117" width="117">](https://github.com/pshurygin) |
+:---: |:---: |:---: |:---: |:---: |:---: |
+[Niaro](https://github.com/Niaro) |[krzysztof-grzybek](https://github.com/krzysztof-grzybek) |[tarsinzer](https://github.com/tarsinzer) |[mehmet-erim](https://github.com/mehmet-erim) |[Timebutt](https://github.com/Timebutt) |[pshurygin](https://github.com/pshurygin) |
+
+[<img alt="thomashuston" src="https://avatars.githubusercontent.com/u/733696?v=4&s=117" width="117">](https://github.com/thomashuston) |[<img alt="Komock" src="https://avatars.githubusercontent.com/u/7387686?v=4&s=117" width="117">](https://github.com/Komock) |[<img alt="jlilly" src="https://avatars.githubusercontent.com/u/2780209?v=4&s=117" width="117">](https://github.com/jlilly) |
+:---: |:---: |:---: |
+[thomashuston](https://github.com/thomashuston) |[Komock](https://github.com/Komock) |[jlilly](https://github.com/jlilly) |
 
 ## License
 
 MIT
-
