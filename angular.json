@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ngx-quicklink-app:build:production"
+              "buildTarget": "ngx-quicklink-app:build:production"
             },
             "development": {
-              "browserTarget": "ngx-quicklink-app:build:development"
+              "buildTarget": "ngx-quicklink-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-quicklink-app:build"
+            "buildTarget": "ngx-quicklink-app:build"
           }
         },
         "test": {
@@ -185,10 +185,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "standalone-app:build:production"
+              "buildTarget": "standalone-app:build:production"
             },
             "development": {
-              "browserTarget": "standalone-app:build:development"
+              "buildTarget": "standalone-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -196,7 +196,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "standalone-app:build"
+            "buildTarget": "standalone-app:build"
           }
         },
         "test": {
