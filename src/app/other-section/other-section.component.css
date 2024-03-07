@@ -1,0 +1,6 @@
+.expander {
+  display: grid;
+  height: 100vh;
+  background: #eee;
+  place-items: center;
+}
