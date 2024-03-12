@@ -9,6 +9,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import * as isEqual from 'fast-deep-equal';
 import { LinkHandler } from './link-handler.service';
 import { LinkHandlerStrategy } from './link-handler-strategy';
 
@@ -35,7 +36,7 @@ export class LinkDirective implements OnChanges, OnDestroy {
   }
 
   ngOnChanges(c: SimpleChanges) {
-    if (c['routerLink'] && this.linkHandler) {
+    if (c.routerLink && this.linkHandler && !isEqual(c.routerLink.currentValue, c.routerLink.previousValue)) {
       this.linkHandler.unregister(this);
       this.linkHandler.register(this);
     }
