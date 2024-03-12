@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { PreloadingStrategy, Router, Route, PRIMARY_OUTLET } from '@angular/router';
+import {
+  PreloadingStrategy,
+  Router,
+  Route,
+  PRIMARY_OUTLET,
+} from '@angular/router';
 import { PrefetchRegistry } from './prefetch-registry.service';
 import { EMPTY } from 'rxjs';
 
@@ -7,20 +12,21 @@ import { EMPTY } from 'rxjs';
 export class QuicklinkStrategy implements PreloadingStrategy {
   loading = new Set<Route>();
 
-  constructor(
-    private registry: PrefetchRegistry,
-    private router: Router,
-  ) {}
+  constructor(private registry: PrefetchRegistry, private router: Router) {}
 
   preload(route: Route, load: Function) {
     if (this.loading.has(route)) {
       // Don't preload the same route twice
       return EMPTY;
     }
-    const conn = typeof navigator !== 'undefined' ? (navigator as any).connection : undefined;
+    const conn =
+      typeof navigator !== 'undefined'
+        ? (navigator as any).connection
+        : undefined;
     if (conn) {
       // Don't preload if the user is on 2G. or if Save-Data is enabled..
-      if ((conn.effectiveType || '').includes('2g') || conn.saveData) return EMPTY;
+      if ((conn.effectiveType || '').includes('2g') || conn.saveData)
+        return EMPTY;
     }
     // Prevent from preloading
     if (route.data && route.data['preload'] === false) {
@@ -53,12 +59,12 @@ const findPath = (config: Route[], route: Route): string => {
       if (route && route.children) {
         children = children.concat(route.children);
       }
-      children.forEach((r: Route) => {
-        if (visited.has(r)) return;
-        parent.set(r, el);
-        config.push(r);
-      });
     }
+    children.forEach((r: Route) => {
+      if (visited.has(r)) return;
+      parent.set(r, el);
+      config.push(r);
+    });
   }
   let path = '';
   let current: Route | undefined = route;
@@ -72,7 +78,8 @@ const findPath = (config: Route[], route: Route): string => {
     current = parent.get(current);
   }
 
-  return path.replace(/\/\//, '/');
+  // For routes with empty paths (the resulted string will look like `///section/sub-section`)
+  return path.replace(/[\/]+/, '/');
 };
 
 function isPrimaryRoute(route: Route) {

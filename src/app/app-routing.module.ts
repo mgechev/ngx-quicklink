@@ -36,6 +36,14 @@ const routes: Routes = [
           ),
         children: [
           {
+            path: 'side',
+            loadComponent: () =>
+              import('./other-section/sub-section/side/side.component').then(
+                (c) => c.SubSectionSideComponent
+              ),
+            outlet: 'sub-section-side',
+          },
+          {
             path: ':pageSlug',
             loadComponent: () =>
               import('./other-section/sub-section/page/page.component').then(

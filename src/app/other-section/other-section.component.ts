@@ -8,7 +8,7 @@ import { QuicklinkModule } from 'ngx-quicklink';
   imports: [RouterModule, QuicklinkModule],
   styleUrls: ['./other-section.component.css'],
   template: `
-    <section>
+    <section class="other-section">
       <h1>Container</h1>
       <ul>
         <li><a routerLink="/other-section/common-info">Common info</a></li>
@@ -16,6 +16,11 @@ import { QuicklinkModule } from 'ngx-quicklink';
           <div class="expander"><span>Expander</span></div>
         </li>
         <li><a routerLink="/other-section/1/1">Section page</a></li>
+        <li>
+          <a [routerLink]="['1', { outlets: { 'sub-section-side': ['side'] } }]"
+            >Section aside</a
+          >
+        </li>
       </ul>
       <router-outlet></router-outlet>
     </section>
