@@ -1,6 +1,6 @@
 {
   "name": "ngx-quicklink",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0"
