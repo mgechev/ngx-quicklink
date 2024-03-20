@@ -1,0 +1,11 @@
+.other-section {
+  padding: 32px;
+  border: 1px solid #eee;
+}
+
+.expander {
+  display: grid;
+  height: 100vh;
+  background: #eee;
+  place-items: center;
+}

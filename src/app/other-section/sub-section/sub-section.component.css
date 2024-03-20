@@ -1,0 +1,11 @@
+.sub-section {
+  position: relative;
+}
+
+.sub-section-side {
+  position: fixed;
+  left: 0;
+  top: calc(50% - 100px);
+  height: 200px;
+  border: 1px solid red;
+}
