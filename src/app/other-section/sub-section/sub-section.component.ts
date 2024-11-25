@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'sub-section',
   styleUrls: ['./sub-section.component.css'],
-  standalone: true,
   imports: [RouterModule],
   template: `
     <section class="sub-section">

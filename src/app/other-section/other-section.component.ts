@@ -4,7 +4,6 @@ import { QuicklinkModule } from 'ngx-quicklink';
 
 @Component({
   selector: 'other-section',
-  standalone: true,
   imports: [RouterModule, QuicklinkModule],
   styleUrls: ['./other-section.component.css'],
   template: `

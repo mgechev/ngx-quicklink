@@ -3,7 +3,6 @@ import { RouterLink } from '@angular/router';
 import { QuicklinkDirective } from 'ngx-quicklink';
 
 @Component({
-  standalone: true,
   imports: [RouterLink, QuicklinkDirective],
   template: `
     <br><br><br><br><br><br><br><br><br><br><br>
