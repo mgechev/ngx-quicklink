@@ -3,11 +3,10 @@ import { RouterModule } from '@angular/router';
 import { QuicklinkModule } from 'ngx-quicklink';
 
 @Component({
-  selector: 'other-section',
-  standalone: true,
-  imports: [RouterModule, QuicklinkModule],
-  styleUrls: ['./other-section.component.css'],
-  template: `
+    selector: 'other-section',
+    imports: [RouterModule, QuicklinkModule],
+    styleUrls: ['./other-section.component.css'],
+    template: `
     <section class="other-section">
       <h1>Container</h1>
       <ul>
@@ -24,6 +23,6 @@ import { QuicklinkModule } from 'ngx-quicklink';
       </ul>
       <router-outlet></router-outlet>
     </section>
-  `,
+  `
 })
 export class OtherSectionComponent {}
