@@ -1,15 +1,17 @@
 <div>
-    <a routerLink="">Root</a>
+  <a routerLink="">Root</a>
+  <br>
+    @if (visible) {
+      <a [routerLink]="primaryRoutePath">Home</a>
+    }
     <br>
-    <a *ngIf="visible" [routerLink]="primaryRoutePath">Home</a>
-    <br>
-    <a routerLink="other-section">Other section</a>
-</div>
-<router-outlet></router-outlet>
+      <a routerLink="other-section">Other section</a>
+    </div>
+    <router-outlet></router-outlet>
 
-<div>
-    <a [routerLink]="secondaryRoutePath">Social</a>
-</div>
-<div class="side">
-    <router-outlet name="side"></router-outlet>
-</div>
+    <div>
+      <a [routerLink]="secondaryRoutePath">Social</a>
+    </div>
+    <div class="side">
+      <router-outlet name="side"></router-outlet>
+    </div>
