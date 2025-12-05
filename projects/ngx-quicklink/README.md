@@ -97,7 +97,7 @@ For a demo:
 
 ```shell
 git clone git@github.com:mgechev/ngx-quicklink
-cd ngx-quicklink && npm i
+cd ngx-quicklink && pnpm i
 ng build --project ngx-quicklink
 ng serve
 ```
