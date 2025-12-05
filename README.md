@@ -62,6 +62,44 @@ export const routes: Routes = [
 
 **Note that to make the module available in lazy-loaded modules as well you need to import it in a shared module and export it.** Look at [this commit](https://github.com/mgechev/angular-realworld-example-app-qucklink/commit/33ea101c7d84bb5ca086f107148bbc958659f83f) to see how `ngx-quicklink` is integrated in the [angular-realworld-example-app](https://github.com/gothinkster/angular-realworld-example-app).
 
+
+### Standalone Approach
+
+Configure your ApplicationConfig like the following:
+
+```ts
+//...
+import { QuicklinkStrategy, quicklinkProviders } from 'ngx-quicklink';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    quicklinkProviders,
+    provideRouter(
+      routes,
+      withPreloading(QuicklinkStrategy)
+    ),
+  ],
+};
+```
+
+Import `QuicklinkDirective` to your standalone components that have routerLinks
+
+```ts
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { QuicklinkDirective } from 'ngx-quicklink';
+
+@Component({
+  standalone: true,
+  imports: [RouterLink, QuicklinkDirective],
+  template: `
+    <a routerLink="/about">About</a>
+  `,
+})
+export default class HomeComponent {
+}
+```
+
 ## Debugging
 
 **Not getting routes preloaded?** Most likely the problem comes from a missing import of the `QuicklinkModule`. The `QuicklinkModule` exports a `LinkDirective` which matches the `[routerLink]` selector. It'll hook into all your router links in the scope of the module and observe their visibility. If you've not imported the `QuicklinkModule` correctly, this directive will be missing and the quicklink preloading strategy will not work.
