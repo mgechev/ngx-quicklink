@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test --watch=false",
     "release": "cp README.md projects/ngx-quicklink && ng build --project ngx-quicklink"
   },
   "private": true,
@@ -27,14 +27,10 @@
     "@angular/build": "^21.0.2",
     "@angular/cli": "~21.0.2",
     "@angular/compiler-cli": "^21.0.3",
-    "@types/jasmine": "~4.0.0",
-    "jasmine-core": "~4.1.0",
-    "karma": "~6.4.4",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.0.0",
-    "karma-jasmine-html-reporter": "~1.7.0",
+    "@vitest/browser-webdriverio": "^4.0.15",
+    "jsdom": "^27.3.0",
     "ng-packagr": "^21.0.0",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "vitest": "^4.0.15"
   }
 }

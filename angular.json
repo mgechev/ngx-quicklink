@@ -81,20 +81,12 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+            "browsers": [
+              "Chrome"
+            ]
           }
         }
       }
@@ -121,11 +113,12 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "projects/ngx-quicklink/src/test.ts",
             "tsConfig": "projects/ngx-quicklink/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-quicklink/karma.conf.js"
+            "browsers": [
+              "ChromeHeadless"
+            ]
           }
         }
       }
@@ -199,24 +192,6 @@
           "builder": "@angular/build:extract-i18n",
           "options": {
             "buildTarget": "standalone-app:build"
-          }
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "projects/standalone-app/tsconfig.spec.json",
-            "assets": [
-              "projects/standalone-app/src/favicon.ico",
-              "projects/standalone-app/src/assets"
-            ],
-            "styles": [
-              "projects/standalone-app/src/styles.css"
-            ],
-            "scripts": []
           }
         }
       }
