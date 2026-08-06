@@ -1,7 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter, withPreloading } from '@angular/router';
-import { QuicklinkStrategy } from 'ngx-quicklink';
-import { quicklinkProviders } from 'projects/ngx-quicklink/src/lib/quicklink.module';
+import { QuicklinkStrategy, quicklinkProviders } from 'ngx-quicklink';
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {
